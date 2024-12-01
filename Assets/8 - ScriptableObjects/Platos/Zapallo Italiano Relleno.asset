@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 372a0d64aa66bf342828c90d79fe2877, type: 3}
+  m_Name: Zapallo Italiano Relleno
+  m_EditorClassIdentifier: 
+  PlatoName: Zapallo Italiano Relleno
+  PlatoSprite: {fileID: 0}
+  Ingredient1: Animal
+  Ingredient1Sprite: {fileID: 0}
+  Ingredient2: Tomate
+  Ingredient2Sprite: {fileID: 0}
+  Ingredient3: zapallo
+  Ingredient3Sprite: {fileID: 0}
