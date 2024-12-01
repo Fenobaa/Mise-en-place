@@ -24,11 +24,7 @@ public class FirstPersonCamera : MonoBehaviour
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
         }
-
-        if (Input.GetKeyDown(KeyCode.Tab))
-        {
-            lockedCursor = !lockedCursor;
-        }
+        
 
         float inputX = Input.GetAxis("Mouse X") * mouseSensitivity;
         float inputY = Input.GetAxis("Mouse Y") * mouseSensitivity;

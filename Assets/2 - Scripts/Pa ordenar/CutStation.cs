@@ -54,32 +54,32 @@ public class CutStation : MonoBehaviour
                 else if (animalCount > 0) 
                 {
                     currentSlicedIngredient = Instantiate(slicedIngredients[1], spawnPoint.transform.position, Quaternion.identity);
-                    currentSlicedIngredient = Instantiate(slicedIngredients[0], spawnPoint.transform.position, Quaternion.identity);
-                    currentSlicedIngredient = Instantiate(slicedIngredients[0], spawnPoint.transform.position, Quaternion.identity);
+                    currentSlicedIngredient = Instantiate(slicedIngredients[1], spawnPoint.transform.position, Quaternion.identity);
+                    currentSlicedIngredient = Instantiate(slicedIngredients[1], spawnPoint.transform.position, Quaternion.identity);
                     Debug.Log("Animal sliced");
                     animalCount--;
                 }
                 else if (berengenaCount > 0)
                 {
                     currentSlicedIngredient = Instantiate(slicedIngredients[2], spawnPoint.transform.position, Quaternion.identity);
-                    currentSlicedIngredient = Instantiate(slicedIngredients[0], spawnPoint.transform.position, Quaternion.identity);
-                    currentSlicedIngredient = Instantiate(slicedIngredients[0], spawnPoint.transform.position, Quaternion.identity);
+                    currentSlicedIngredient = Instantiate(slicedIngredients[2], spawnPoint.transform.position, Quaternion.identity);
+                    currentSlicedIngredient = Instantiate(slicedIngredients[2], spawnPoint.transform.position, Quaternion.identity);
                     Debug.Log("Berengena sliced");
                     berengenaCount--;
                 }
                 else if (papaCount > 0)
                 {
                     currentSlicedIngredient = Instantiate(slicedIngredients[3], spawnPoint.transform.position, Quaternion.identity);
-                    currentSlicedIngredient = Instantiate(slicedIngredients[0], spawnPoint.transform.position, Quaternion.identity);
-                    currentSlicedIngredient = Instantiate(slicedIngredients[0], spawnPoint.transform.position, Quaternion.identity);
+                    currentSlicedIngredient = Instantiate(slicedIngredients[3], spawnPoint.transform.position, Quaternion.identity);
+                    currentSlicedIngredient = Instantiate(slicedIngredients[3], spawnPoint.transform.position, Quaternion.identity);
                     Debug.Log("Papa sliced");
                     papaCount--;
                 }
                 else if (zapalloCount > 0)
                 {
                     currentSlicedIngredient = Instantiate(slicedIngredients[4], spawnPoint.transform.position, Quaternion.identity);
-                    currentSlicedIngredient = Instantiate(slicedIngredients[0], spawnPoint.transform.position, Quaternion.identity);
-                    currentSlicedIngredient = Instantiate(slicedIngredients[0], spawnPoint.transform.position, Quaternion.identity);
+                    currentSlicedIngredient = Instantiate(slicedIngredients[4], spawnPoint.transform.position, Quaternion.identity);
+                    currentSlicedIngredient = Instantiate(slicedIngredients[4], spawnPoint.transform.position, Quaternion.identity);
                     Debug.Log("Zapallo sliced");
                     zapalloCount--;
                 }

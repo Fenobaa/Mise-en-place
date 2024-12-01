@@ -7,13 +7,20 @@ using Random = UnityEngine.Random;
 
 public class Inventory : MonoBehaviour
 {
-    public static Inventory instance;
-    
-    public List<GameObject> panelesPedidos;
-    public PlatosScriptable[] platos = new PlatosScriptable[4];
-    private PlatosScriptable[] pedidos = new PlatosScriptable[4];
+    public PlatosScriptable[] platos = new PlatosScriptable[5];
+    private PlatosScriptable[] pedidos = new PlatosScriptable[5];
     public GameObject platoPanelPB;
     public RectTransform pedidosPanel;
+<<<<<<< Updated upstream
+    private void Start()
+=======
+    
+    public int maxOrders;
+    private int ordersCreated = 0;
+    public int ordersSpawnTime;
+    
+    private bool createOrders = false;
+    private bool alreadyCreating = false;
 
     private void Awake()
     {
@@ -28,39 +35,82 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    private void Start()
+
+
+    private void Update()
+>>>>>>> Stashed changes
     {
-        StartCoroutine(NewOrder());
+
+        if (createOrders == false && GameManager.instance.pauseTimers == false )
+        {
+            createOrders = true;
+            
+        }
+
+        if (createOrders == true && GameManager.instance.pauseTimers == false 
+                                 && ordersCreated < maxOrders && alreadyCreating == false)
+        {
+            alreadyCreating = true;
+            StartCoroutine(NewOrder());
+        }
     }
 
     IEnumerator NewOrder()
     {
+        createOrders = true;
+        
         for (int i = 0; i < pedidos.Length; i++)
         {
-            int randomIndex = Random.Range(0, pedidos.Length);
-            PlatosScriptable platoSeleccionado = platos[randomIndex];
+            if (GameManager.instance.pauseTimers == false)
+            {
+                if (ordersCreated < maxOrders)
+                {
+                    int randomIndex = Random.Range(0, pedidos.Length);
+                    PlatosScriptable platoSeleccionado = platos[randomIndex];
             
+<<<<<<< Updated upstream
             pedidos[i] = platoSeleccionado;
             GameObject newPedido = Instantiate(platoPanelPB, pedidosPanel);
+
             
             newPedido.GetComponent<PrefabUpdater>().thisPlatoScriptable = platoSeleccionado;
             newPedido.transform.localScale = Vector3.one; // Mantén la escala original
             newPedido.transform.localPosition = Vector3.zero; // Opcional: centra al hijo en el padre
             newPedido.transform.localRotation = Quaternion.identity; // Opcional: reinicia rotación
-            
-            AddPedido(newPedido);
             yield return new WaitForSeconds(6);
+=======
+                    pedidos[i] = platoSeleccionado;
+                    GameObject newPedido = Instantiate(platoPanelPB, pedidosPanel);
+            
+                    newPedido.GetComponent<PrefabUpdater>().thisPlatoScriptable = platoSeleccionado;
+                    newPedido.transform.localScale = Vector3.one; // Mantén la escala original
+                    newPedido.transform.localPosition = Vector3.zero; // Opcional: centra al hijo en el padre
+                    newPedido.transform.localRotation = Quaternion.identity; // Opcional: reinicia rotación
+            
+                    AddPedido(newPedido);
+                    ordersCreated++;
+
+                }
+                else
+                {
+                    break;
+                }
+                
+            }
+
+            if (GameManager.instance.pauseTimers == true)
+            {
+                createOrders = false;
+                alreadyCreating = false;
+                break;
+            }
+            yield return new WaitForSeconds(ordersSpawnTime);
+
+>>>>>>> Stashed changes
         }
-    }
 
-    public void AddPedido(GameObject panelPedido)
-    {
-        panelesPedidos.Add(panelPedido);
     }
-
-    public void RemovePedido(GameObject panelPedido)
-    {
-        panelesPedidos.Remove(panelPedido);
-    }
+    
+    
     
 }

@@ -13,6 +13,7 @@ public class Cambiodeobjetos : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            GameManager.instance.pauseTimers = true;
             Cuchillo.SetActive(false);
             Cigarro.SetActive(true);
         }
@@ -22,6 +23,7 @@ public class Cambiodeobjetos : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            GameManager.instance.pauseTimers = false;
             Cuchillo.SetActive(true);
             Cigarro.SetActive(false);
         }

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using System.Collections;
 
@@ -18,9 +19,14 @@ public class Cookable : MonoBehaviour
     public Texture cookedTexture;
     public Texture burnedTexture;
 
+    private Coroutine cookingCoroutine;
     private float timeInTrigger = 0f;
     private Renderer objectRenderer;
 
+    private bool isCooking = false;
+    private bool alreadyCooking = false;
+
+    
     private void Start()
     {
         objectRenderer = GetComponent<Renderer>();
@@ -39,42 +45,72 @@ public class Cookable : MonoBehaviour
                 break;
             case CookingState.Burned:
                 objectRenderer.material.mainTexture = burnedTexture;
+                isCooking = false;
                 break;
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    // private void OnTriggerEnter(Collider other)
+    // {
+    //     if (other.CompareTag("CookingZone"))
+    //     {
+    //         StartCooking();
+    //     }
+    // }
+    //
+    // private void OnTriggerExit(Collider other)
+    // {
+    //     if (other.CompareTag("CookingZone"))
+    //     {
+    //         Debug.Log("Dejo de cocinarse");
+    //         StopCooking();
+    //     }
+    // }
+    private void Update()
     {
-        if (other.CompareTag("CookingZone"))
+        if (GameManager.instance.pauseTimers == true )
         {
-            StartCooking();
+            if (cookingCoroutine != null)
+            {
+                StopCooking();
+                alreadyCooking = false;
+            }
+            
         }
-    }
+        else if (isCooking == true && GameManager.instance.pauseTimers == false )
+        {
+            if (alreadyCooking == false)
+            {
+                StartCooking();
+                alreadyCooking = true;
+            }
+        }
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("CookingZone"))
-        {
-            StopCooking();
-        }
     }
 
     public void StartCooking()
     {
-        StartCoroutine(CookingRoutine());
+        if (cookingCoroutine == null)
+        {
+            cookingCoroutine = StartCoroutine(CookingRoutine());
+        }
     }
 
     public void StopCooking()
     {
-        StopCoroutine(CookingRoutine());
+        if (cookingCoroutine != null)
+        {
+            StopCoroutine(cookingCoroutine);
+            cookingCoroutine = null;
+        }
     }
 
     private IEnumerator CookingRoutine()
     {
+        isCooking = true;
         while (true)
         {
             timeInTrigger += Time.deltaTime;
-
             if (timeInTrigger >= burningTime)
             {
                 currentState = CookingState.Burned;
@@ -85,9 +121,10 @@ public class Cookable : MonoBehaviour
                 currentState = CookingState.Cooked;
                 Debug.Log("El objeto está cocido.");
             }
-
             UpdateTexture();
             yield return null;
         }
     }
+    
+    
 }
