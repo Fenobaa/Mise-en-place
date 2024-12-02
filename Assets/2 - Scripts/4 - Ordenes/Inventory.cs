@@ -15,7 +15,6 @@ public class Inventory : MonoBehaviour
     public RectTransform pedidosPanel;
 
     public int maxOrders;
-    private int ordersCreated = 0;
     public int ordersSpawnTime;
     
     private bool createOrders = false;
@@ -38,64 +37,61 @@ public class Inventory : MonoBehaviour
     private void Update()
     {
 
-        if (createOrders == false && GameManager.instance.pauseTimers == false )
+        if (!createOrders && !GameManager.instance.pauseTimers)
         {
             createOrders = true;
-            
         }
-
-        if (createOrders == true && GameManager.instance.pauseTimers == false 
-                                 && ordersCreated < maxOrders && alreadyCreating == false)
+    
+        if (createOrders && !alreadyCreating)
         {
+            Debug.Log("Iniciando creación de pedidos...");
             alreadyCreating = true;
             StartCoroutine(NewOrder());
         }
+        
     }
 
     IEnumerator NewOrder()
     {
         createOrders = true;
-        
-        for (int i = 0; i < pedidos.Length; i++)
+    
+        while (GameManager.instance.ordersCreated < maxOrders)
         {
-            if (GameManager.instance.pauseTimers == false)
-            {
-                if (ordersCreated < maxOrders)
-                {
-                    int randomIndex = Random.Range(0, pedidos.Length);
-                    PlatosScriptable platoSeleccionado = platos[randomIndex];
-                    
-                    pedidos[i] = platoSeleccionado;
-                    GameObject newPedido = Instantiate(platoPanelPB, pedidosPanel);
-            
-                    newPedido.GetComponent<PrefabUpdater>().thisPlatoScriptable = platoSeleccionado;
-                    newPedido.transform.localScale = Vector3.one; // Mantén la escala original
-                    newPedido.transform.localPosition = Vector3.zero; // Opcional: centra al hijo en el padre
-                    newPedido.transform.localRotation = Quaternion.identity; // Opcional: reinicia rotación
-            
-                    AddPedido(newPedido);
-                    ordersCreated++;
-
-                }
-                else
-                {
-                    break;
-                }
-                
-            }
-
-            if (GameManager.instance.pauseTimers == true)
+            if (GameManager.instance.pauseTimers)
             {
                 createOrders = false;
                 alreadyCreating = false;
-                break;
+                yield break; // Salir de la corrutina si el temporizador está en pausa
             }
+        
+            // Generar un nuevo pedido
+            int randomIndex = Random.Range(0, platos.Length);
+            PlatosScriptable platoSeleccionado = platos[randomIndex];
+        
+            GameObject newPedido = Instantiate(platoPanelPB, pedidosPanel);
+            newPedido.GetComponent<PrefabUpdater>().thisPlatoScriptable = platoSeleccionado;
+            newPedido.transform.localScale = Vector3.one;
+            newPedido.transform.localPosition = Vector3.zero;
+            newPedido.transform.localRotation = Quaternion.identity;
+
+            AddPedido(newPedido);
+            GameManager.instance.ordersCreated++;
+        
             yield return new WaitForSeconds(ordersSpawnTime);
-            
         }
+
+        // Finalizar creación
+        alreadyCreating = false;
+        createOrders = false;
+
 
     }
 
+    IEnumerator StartNewOrderWithDelay()
+    {
+        yield return new WaitForSeconds(ordersSpawnTime);
+        StartCoroutine(NewOrder());
+    }
     public void AddPedido(GameObject panelPedido)
     {
         panelesPedidos.Add(panelPedido);
@@ -104,6 +100,18 @@ public class Inventory : MonoBehaviour
     public void RemovePedido(GameObject panelPedido)
     {
         panelesPedidos.Remove(panelPedido);
+        GameManager.instance.ordersCreated--;
+        if (GameManager.instance.ordersCreated < maxOrders)
+        {
+            createOrders = true;
+
+            // Si no hay una corrutina activa, reiníciala
+            if (!alreadyCreating)
+            {
+                alreadyCreating = true;
+                StartCoroutine(StartNewOrderWithDelay());
+            }
+        }
     }
     
     
