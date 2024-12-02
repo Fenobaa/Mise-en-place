@@ -77,10 +77,12 @@ public class Inventory : MonoBehaviour
                     ordersCreated++;
 
                 }
-                else
+                else if (ordersCreated == maxOrders)
                 {
+                    alreadyCreating = false;
                     break;
                 }
+
                 
             }
 

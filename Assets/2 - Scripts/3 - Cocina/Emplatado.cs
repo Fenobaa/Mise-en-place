@@ -253,6 +253,11 @@ public class Emplatado : MonoBehaviour
             }
 
         }
+
+        if (other.CompareTag("Draggable") && other.name == "NoodlePackage(Clone)")
+        {
+            AddIngredient(other.gameObject);
+        }
     }
 
     private void OnTriggerExit(Collider other)
