@@ -25,7 +25,8 @@ public class Emplatado : MonoBehaviour
     public int papa;
     public int spaghetti;
     public int berengena;
-    
+
+    private bool used;
 
     void AddIngredient(GameObject ingredient)
     {
@@ -39,26 +40,51 @@ public class Emplatado : MonoBehaviour
         if (ingredient.name == "MEAT(Clone)")
         {
             animal--;
+            if (used)
+            {
+                Destroy(ingredient);
+            }
+
         }
         else if (ingredient.name == "ZucchiniCut(Clone)")
         {
             zapallo--;
+            if (used)
+            {
+                Destroy(ingredient);
+            }
         }
         else if (ingredient.name == "TomateCortado(Clone)")
         {
             tomate--;
+            if (used)
+            {
+                Destroy(ingredient);
+            }
         }
         else if (ingredient.name == "PotatoCut(Clone)")
         {
             papa--;
+            if (used)
+            {
+                Destroy(ingredient);
+            }
         }
         else if (ingredient.name == "NoodlePackage(Clone)")
         {
             spaghetti--;
+            if (used)
+            {
+                Destroy(ingredient);
+            }
         }
         else if (ingredient.name == "EggplantCut(Clone)")
         {
             berengena--;
+            if (used)
+            {
+                Destroy(ingredient);
+            }
         }
         totalIngredients = animal + zapallo + tomate + papa + berengena + spaghetti;
         
@@ -72,26 +98,32 @@ public class Emplatado : MonoBehaviour
             if (ingredient.name == "MEAT(Clone)")
             {
                 animal++;
+                Debug.Log(animal);
             }
             else if (ingredient.name == "ZucchiniCut(Clone)")
             {
                 zapallo++;
+                Debug.Log(zapallo);
             }
             else if (ingredient.name == "TomateCortado(Clone)")
             {
                 tomate++;
+                Debug.Log(tomate);
             }
             else if (ingredient.name == "PotatoCut(Clone)")
             {
                 papa++;
+                Debug.Log(papa);
             }
             else if (ingredient.name == "EggplantCut(Clone)")
             {
                 berengena++;
+                Debug.Log(berengena);
             }
             else if (ingredient.name == "NoodlePackage(Clone)")
             {
                 spaghetti++;
+                Debug.Log(spaghetti);
             }
         }
         
@@ -105,60 +137,75 @@ public class Emplatado : MonoBehaviour
         if (animal > 0 && zapallo > 0 && tomate > 0) // Zapallo Italiano
         {
             GameObject newDish = Instantiate(dishes[0], whereInstanciate.position, Quaternion.identity);
-            RemoveIngredient(gameObject);
+            used = true;
+            RemoveIngredient(currentIngredients.Find(x => x.name == "ZucchiniCut(Clone)"));
+            RemoveIngredient(currentIngredients.Find(x => x.name == "TomateCortado(Clone)"));
+            RemoveIngredient(currentIngredients.Find(x => x.name == "MEAT(Clone)"));
+            
             if (newDish.GetComponent<Plato>() != null)
             {
-                newDish.GetComponent<Plato>().thisPlato = platosSO[0];
+                newDish.GetComponent<Plato>().thisPlato = platosSO[3];
             }
             else
             {
                 newDish.AddComponent<Plato>();
-                newDish.GetComponent<Plato>().thisPlato = platosSO[0];
+                newDish.GetComponent<Plato>().thisPlato = platosSO[3];
             }
-            
+
+            used = false;
             DeleteOrder(newDish.GetComponent<Plato>().thisPlato);
             GameManager.instance.textAdvertencias.text = " ";
         }
 
-        else if (berengena > 0 && tomate > 0 && zapallo > 0)
+        else if (berengena > 0 && tomate > 0 && zapallo > 0) //Ratatouille
         {
-            RemoveIngredient(gameObject);
             GameObject newDish = Instantiate(dishes[0], whereInstanciate.position, Quaternion.identity);
+            used = true;
+            RemoveIngredient(currentIngredients.Find(x => x.name == "EggpantCut(Clone)"));
+            RemoveIngredient(currentIngredients.Find(x => x.name == "TomateCortado(Clone)"));
+            RemoveIngredient(currentIngredients.Find(x => x.name == "ZucchiniCut(Clone)"));
             if (newDish.GetComponent<Plato>() != null)
             {
-                newDish.GetComponent<Plato>().thisPlato = platosSO[0];
+                newDish.GetComponent<Plato>().thisPlato = platosSO[1];
             }
             else
             {
                 newDish.AddComponent<Plato>();
-                newDish.GetComponent<Plato>().thisPlato = platosSO[0];
+                newDish.GetComponent<Plato>().thisPlato = platosSO[1];
             }
-            
+            used = false;
             DeleteOrder(newDish.GetComponent<Plato>().thisPlato);
             GameManager.instance.textAdvertencias.text = " ";
         }
 
-        else if (spaghetti > 0 && tomate > 0 && animal > 0)
+        else if (spaghetti > 0 && tomate > 0 && animal > 0) //Spaghetti boloñesa
         {
-            RemoveIngredient(gameObject);
             GameObject newDish = Instantiate(dishes[0], whereInstanciate.position, Quaternion.identity);
+            used = true;
+            RemoveIngredient(currentIngredients.Find(x => x.name == "NoodlePackage(Clone)"));
+            RemoveIngredient(currentIngredients.Find(x => x.name == "TomateCortado(Clone)"));
+            RemoveIngredient(currentIngredients.Find(x => x.name == "MEAT(Clone)"));
+
             if (newDish.GetComponent<Plato>() != null)
             {
-                newDish.GetComponent<Plato>().thisPlato = platosSO[0];
+                newDish.GetComponent<Plato>().thisPlato = platosSO[2];
             }
             else
             {
                 newDish.AddComponent<Plato>();
-                newDish.GetComponent<Plato>().thisPlato = platosSO[0];
+                newDish.GetComponent<Plato>().thisPlato = platosSO[2];
             }
-            
+            used = false;
             DeleteOrder(newDish.GetComponent<Plato>().thisPlato);
             GameManager.instance.textAdvertencias.text = " ";
         }
-        else if (papa > 0 && animal > 0)
+        else if (papa > 0 && animal > 0) //Carne con pure
         {
-            RemoveIngredient(gameObject);
             GameObject newDish = Instantiate(dishes[0], whereInstanciate.position, Quaternion.identity);
+            used = true;
+            RemoveIngredient(currentIngredients.Find(x => x.name == "MEAT(Clone)"));
+            RemoveIngredient(currentIngredients.Find(x => x.name == "PotatoCut(Clone)"));
+
             if (newDish.GetComponent<Plato>() != null)
             {
                 newDish.GetComponent<Plato>().thisPlato = platosSO[0];
@@ -168,7 +215,7 @@ public class Emplatado : MonoBehaviour
                 newDish.AddComponent<Plato>();
                 newDish.GetComponent<Plato>().thisPlato = platosSO[0];
             }
-            
+            used = false;
             DeleteOrder(newDish.GetComponent<Plato>().thisPlato);
             GameManager.instance.textAdvertencias.text = " ";
         }
@@ -180,11 +227,14 @@ public class Emplatado : MonoBehaviour
 
     void DeleteOrder(PlatosScriptable platoSO)
     {
+        Debug.Log("setaeliminando");
         Inventory inventory = Inventory.instance;
         
         foreach (GameObject panel in inventory.panelesPedidos)
         {
-            if (panel.GetComponent<PlatosScriptable>() == platoSO)
+             PrefabUpdater prefabUpdater = panel.GetComponent<PrefabUpdater>();
+             
+            if (prefabUpdater.thisPlatoScriptable == platoSO)
             {
                 Destroy(panel);
                 inventory.RemovePedido(panel);
@@ -194,17 +244,27 @@ public class Emplatado : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Draggable"))
+        if (other.CompareTag("Draggable") && other.GetComponent<Cookable>())
         {
-            AddIngredient(other.gameObject);
+            Cookable cookable = other.GetComponent<Cookable>();
+            if (cookable.currentState == Cookable.CookingState.Cooked)
+            {
+                AddIngredient(other.gameObject);
+            }
+
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Draggable"))
+        if (other.CompareTag("Draggable") && other.GetComponent<Cookable>())
         {
-            RemoveIngredient(other.gameObject);
+            Cookable cookable = other.GetComponent<Cookable>();
+            if (cookable.currentState == Cookable.CookingState.Cooked)
+            {
+                RemoveIngredient(other.gameObject);
+            }
+
         }
     }
 }

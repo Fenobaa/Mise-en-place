@@ -7,20 +7,21 @@ using Random = UnityEngine.Random;
 
 public class Inventory : MonoBehaviour
 {
-    public PlatosScriptable[] platos = new PlatosScriptable[5];
-    private PlatosScriptable[] pedidos = new PlatosScriptable[5];
+    public static Inventory instance;
+    public List<GameObject> panelesPedidos;
+    public PlatosScriptable[] platos = new PlatosScriptable[4];
+    private PlatosScriptable[] pedidos = new PlatosScriptable[4];
     public GameObject platoPanelPB;
     public RectTransform pedidosPanel;
-<<<<<<< Updated upstream
-    private void Start()
-=======
-    
+
     public int maxOrders;
     private int ordersCreated = 0;
     public int ordersSpawnTime;
     
     private bool createOrders = false;
     private bool alreadyCreating = false;
+
+
 
     private void Awake()
     {
@@ -34,11 +35,7 @@ public class Inventory : MonoBehaviour
             Destroy(this);  // Si ya existe una instancia, destruye este GameManager
         }
     }
-
-
-
     private void Update()
->>>>>>> Stashed changes
     {
 
         if (createOrders == false && GameManager.instance.pauseTimers == false )
@@ -67,18 +64,7 @@ public class Inventory : MonoBehaviour
                 {
                     int randomIndex = Random.Range(0, pedidos.Length);
                     PlatosScriptable platoSeleccionado = platos[randomIndex];
-            
-<<<<<<< Updated upstream
-            pedidos[i] = platoSeleccionado;
-            GameObject newPedido = Instantiate(platoPanelPB, pedidosPanel);
-
-            
-            newPedido.GetComponent<PrefabUpdater>().thisPlatoScriptable = platoSeleccionado;
-            newPedido.transform.localScale = Vector3.one; // Mantén la escala original
-            newPedido.transform.localPosition = Vector3.zero; // Opcional: centra al hijo en el padre
-            newPedido.transform.localRotation = Quaternion.identity; // Opcional: reinicia rotación
-            yield return new WaitForSeconds(6);
-=======
+                    
                     pedidos[i] = platoSeleccionado;
                     GameObject newPedido = Instantiate(platoPanelPB, pedidosPanel);
             
@@ -105,10 +91,19 @@ public class Inventory : MonoBehaviour
                 break;
             }
             yield return new WaitForSeconds(ordersSpawnTime);
-
->>>>>>> Stashed changes
+            
         }
 
+    }
+
+    public void AddPedido(GameObject panelPedido)
+    {
+        panelesPedidos.Add(panelPedido);
+    }
+
+    public void RemovePedido(GameObject panelPedido)
+    {
+        panelesPedidos.Remove(panelPedido);
     }
     
     
