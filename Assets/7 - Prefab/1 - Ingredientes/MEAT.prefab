@@ -157,8 +157,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 0
-  cookingTime: 30
-  burningTime: 40
+  cookingTime: 10
+  burningTime: 20
   rawTexture: {fileID: 2800000, guid: 5915fafd69842ea4aac16a4ef6e0ef02, type: 3}
   cookedTexture: {fileID: 2800000, guid: 61431890951486241815c0ac8422697e, type: 3}
   burnedTexture: {fileID: 2800000, guid: b6d7e79ab3541c24abc4c2ab26b4f85a, type: 3}
