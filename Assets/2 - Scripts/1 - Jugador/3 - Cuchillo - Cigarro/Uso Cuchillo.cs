@@ -7,7 +7,12 @@ public class UsoCuchillo : MonoBehaviour
 {
     private Cambiodeobjetos Cambio;
     
+    private AudioSource audioSource;
+    public AudioClip wallSound;
+    public bool isOntriggerWall;
+    
     public Animator Anim;
+
 
     private void Awake()
     {
@@ -16,8 +21,13 @@ public class UsoCuchillo : MonoBehaviour
     
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse1)) //&& Cambio.Cuchillo.activeSelf == true)
+        if (Input.GetKeyDown(KeyCode.Mouse1))
         {
+            if (isOntriggerWall)
+            {
+                audioSource.clip = wallSound;
+                audioSource.Play();
+            }
             Anim.SetTrigger("Stab");
         }
     }
