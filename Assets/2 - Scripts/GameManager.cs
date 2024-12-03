@@ -17,6 +17,9 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI textIndicaciones;
     public TextMeshProUGUI textAdvertencias;
     public bool pauseTimers;
+
+
+    public int ordersCreated = 0;
     
 
     private void Awake()

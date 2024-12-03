@@ -11,6 +11,7 @@ TagManager:
   - Basket
   - CookingStation
   - CookingZone
+  - Wall
   layers:
   - Default
   - TransparentFX

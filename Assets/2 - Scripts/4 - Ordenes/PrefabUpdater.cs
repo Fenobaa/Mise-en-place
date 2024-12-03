@@ -33,7 +33,7 @@ public class PrefabUpdater : MonoBehaviour
 
     private void Start()
     {
-        timerTime = 160;
+        timerTime = 10;
         gameManager = GameManager.instance;
         getComponentsInChildren();
         ActualizadorPlato();
@@ -45,6 +45,7 @@ public class PrefabUpdater : MonoBehaviour
     {
         if (gameManager.pauseTimers == false)
         {
+            Inventory inventory = Inventory.instance;
             secondChecker -= Time.deltaTime;
 
             if (secondChecker <= 0)
@@ -58,8 +59,13 @@ public class PrefabUpdater : MonoBehaviour
             if (timerTime == 0)
             {
                 gameManager.MultiplicadordeAnsiedad += 0.1f;
-                Debug.Log(gameManager.MultiplicadordeAnsiedad);
+                //Debug.Log(gameManager.MultiplicadordeAnsiedad);
+
+
+                inventory.RemovePedido(this.gameObject);
+                this.gameObject.transform.SetParent(null);
                 Destroy(this.gameObject);
+
             }
         }
         
