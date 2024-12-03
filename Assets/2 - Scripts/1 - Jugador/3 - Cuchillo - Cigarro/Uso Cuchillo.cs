@@ -18,7 +18,12 @@ public class UsoCuchillo : MonoBehaviour
     {
         Cambio = FindObjectOfType<Cambiodeobjetos>();
     }
-    
+
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Mouse1))

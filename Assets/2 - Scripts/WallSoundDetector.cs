@@ -9,6 +9,7 @@ public class WallSoundDetector : MonoBehaviour
     {
         if (other.GetComponent<UsoCuchillo>())
         {
+            Debug.Log(other.name);
             UsoCuchillo usoCuchillo = other.GetComponent<UsoCuchillo>();
             usoCuchillo.isOntriggerWall = true;
             Debug.Log(usoCuchillo.isOntriggerWall);
