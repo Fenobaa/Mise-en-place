@@ -32,7 +32,6 @@ public class PrefabUpdater : MonoBehaviour
 
     private void Start()
     {
-        timerTime = 10;
         gameManager = GameManager.instance;
         getComponentsInChildren();
         ActualizadorPlato();
