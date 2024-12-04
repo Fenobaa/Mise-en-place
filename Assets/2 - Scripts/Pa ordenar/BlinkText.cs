@@ -9,15 +9,29 @@ public class BlinkText : MonoBehaviour
 {
     public Animator Anims;
 
+    public GameObject Camara;
+    public GameObject texto;
+
     private void Start()
     {
-        
+        Camara.SetActive(false);
     }
     public void Update()
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             Anims.SetBool("Click", true);
+            {
+                Camara.SetActive(true);
+                TIEMPO();
+            }
         }
+    }
+
+    IEnumerator TIEMPO()
+    {
+        yield return new WaitForSeconds(1);
+        
+        texto.SetActive(false);
     }
 }

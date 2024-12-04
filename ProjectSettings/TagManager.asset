@@ -12,6 +12,7 @@ TagManager:
   - CookingStation
   - CookingZone
   - Wall
+  - TriggerOPT
   layers:
   - Default
   - TransparentFX
