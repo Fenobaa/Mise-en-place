@@ -49,23 +49,7 @@ public class Cookable : MonoBehaviour
                 break;
         }
     }
-
-    // private void OnTriggerEnter(Collider other)
-    // {
-    //     if (other.CompareTag("CookingZone"))
-    //     {
-    //         StartCooking();
-    //     }
-    // }
-    //
-    // private void OnTriggerExit(Collider other)
-    // {
-    //     if (other.CompareTag("CookingZone"))
-    //     {
-    //         Debug.Log("Dejo de cocinarse");
-    //         StopCooking();
-    //     }
-    // }
+    
     private void Update()
     {
         if (GameManager.instance.pauseTimers == true )
