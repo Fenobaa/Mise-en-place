@@ -3149,7 +3149,7 @@ Transform:
   m_GameObject: {fileID: 1102418700}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3, y: 3.431, z: 11.439}
+  m_LocalPosition: {x: 1, y: 3.431, z: 11.439}
   m_LocalScale: {x: 1, y: 0.25519, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5727,6 +5727,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 687491873}
     m_Modifications:
+    - target: {fileID: 670783157849236437, guid: 6ce743ae9f1524c4baebc830e19215c3,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7062201440771083134, guid: 6ce743ae9f1524c4baebc830e19215c3,
         type: 3}
       propertyPath: m_Name
@@ -53818,6 +53823,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1211396299023886830, guid: bf6738beedbe78443a168c3d0ac8baa7,
+        type: 3}
+      propertyPath: playerSpeed
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 3032803324389990887, guid: bf6738beedbe78443a168c3d0ac8baa7,
         type: 3}
       propertyPath: medidorCancerStage1

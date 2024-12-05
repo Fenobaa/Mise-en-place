@@ -59,7 +59,7 @@ public class MedidordeAnsiedad : MonoBehaviour
         {
 
             MedidorAnsiedad.fillAmount = (float) gameManager.puntosdeAnsiedad;
-            Debug.Log(MedidorAnsiedad.fillAmount);
+            //Debug.Log(MedidorAnsiedad.fillAmount);
         }
     }
 
