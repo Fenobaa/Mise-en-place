@@ -360,7 +360,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thisPlatoScriptable: {fileID: 11400000, guid: 0c10873a076033d409a66fff0e72d0e1,
     type: 2}
-  timerTime: 100
+  timerTime: 120
   secondChecker: 1
 --- !u!222 &6251234378996000649
 CanvasRenderer:
