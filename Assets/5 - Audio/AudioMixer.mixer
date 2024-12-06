@@ -1,5 +1,38 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!244 &-9219006629663790983
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 78336de8658f5a5468cecf97d48d0f94
+  m_EffectName: Attenuation
+  m_MixLevel: b12fc93b569e0744991f75b5f4d72fd4
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!243 &-3075606302199340875
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: BGM1
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: f124d21f5ee7ad74289939ea54065c11
+  m_Children: []
+  m_Volume: bc581c49ecd25ed40851f637dc25344c
+  m_Pitch: 4d75ea6939daedf49915e1ae9d690fc7
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: -9219006629663790983}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
 --- !u!241 &24100000
 AudioMixerController:
   m_ObjectHideFlags: 0
@@ -18,6 +51,10 @@ AudioMixerController:
   m_ExposedParameters:
   - guid: f9bbb5f29a2a3f94a97e7d6d8ff985ed
     name: ExposedBGM
+  - guid: bc581c49ecd25ed40851f637dc25344c
+    name: ExposedBGM1
+  - guid: 817e681927037b543a6f2e5fb09d1572
+    name: ExposedBGM2
   - guid: a760cea975cad1d4da25f4639ca01683
     name: ExposedMaster
   - guid: f91f96e9ad2e7d245872791bd56d47b0
@@ -28,6 +65,7 @@ AudioMixerController:
     - 37eecea595d391c41899257bd4ae934d
     - 5ac2f26d9dcedde4ba8a068f02c8cc1a
     - 74e2c5ce5fa1f23479bb8b2c6faed3c4
+    - f124d21f5ee7ad74289939ea54065c11
     name: View
   m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24500006}
@@ -123,6 +161,7 @@ AudioMixerGroupController:
   m_GroupID: 37eecea595d391c41899257bd4ae934d
   m_Children:
   - {fileID: 144089681012504921}
+  - {fileID: -3075606302199340875}
   m_Volume: f9bbb5f29a2a3f94a97e7d6d8ff985ed
   m_Pitch: 1622fb61ab55eea4b84f5a05b7d443f9
   m_Send: 00000000000000000000000000000000

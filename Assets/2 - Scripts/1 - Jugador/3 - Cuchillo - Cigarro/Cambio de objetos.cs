@@ -21,6 +21,7 @@ public class Cambiodeobjetos : MonoBehaviour
             cigarro.SetActive(true);
             animator.SetBool("Smoke", true);
             encendedor.SetActive(true);
+            BGMManager.Instance.Outside();
         }
     }
 
@@ -33,6 +34,8 @@ public class Cambiodeobjetos : MonoBehaviour
             cigarro.SetActive(false);  
             encendedor.SetActive(false);
             cuchillo.SetActive(true);
+            BGMManager.Instance.Inside();
+            SFXManager.Instance.DrawKnife();
 
         }
     }

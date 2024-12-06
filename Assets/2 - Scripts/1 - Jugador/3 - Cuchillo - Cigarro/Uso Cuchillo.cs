@@ -7,7 +7,6 @@ public class UsoCuchillo : MonoBehaviour
 {
     private Cambiodeobjetos Cambio;
     
-    private AudioSource audioSource;
     public AudioClip wallSound;
     public bool isOntriggerWall;
     
@@ -19,19 +18,13 @@ public class UsoCuchillo : MonoBehaviour
         Cambio = FindObjectOfType<Cambiodeobjetos>();
     }
 
-    private void Start()
-    {
-        audioSource = GetComponent<AudioSource>();
-    }
-
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
             if (isOntriggerWall)
             {
-                audioSource.clip = wallSound;
-                audioSource.Play();
+                SFXManager.Instance.StabCeramic();
             }
             Anim.SetTrigger("Stab");
         }
