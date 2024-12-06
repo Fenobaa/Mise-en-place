@@ -131,6 +131,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1047839724588043877, guid: bf6738beedbe78443a168c3d0ac8baa7,
+        type: 3}
+      propertyPath: m_LightProbeUsage
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4519871643205555432, guid: bf6738beedbe78443a168c3d0ac8baa7,
         type: 3}
       propertyPath: m_Name
