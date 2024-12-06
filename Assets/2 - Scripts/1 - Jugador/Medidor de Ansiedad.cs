@@ -46,7 +46,7 @@ public class MedidordeAnsiedad : MonoBehaviour
                 segundero += Time.deltaTime;
                 if (segundero >= 1)
                 {
-                    gameManager.puntosdeAnsiedad += 0.001f;
+                    gameManager.puntosdeAnsiedad += 0.001f * gameManager.MultiplicadordeAnsiedad;
                     segundero = 0;
                 }
             }
@@ -59,7 +59,7 @@ public class MedidordeAnsiedad : MonoBehaviour
         {
 
             MedidorAnsiedad.fillAmount = (float) gameManager.puntosdeAnsiedad;
-            Debug.Log(MedidorAnsiedad.fillAmount);
+            //Debug.Log(MedidorAnsiedad.fillAmount);
         }
     }
 

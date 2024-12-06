@@ -153,6 +153,7 @@ public class Emplatado : MonoBehaviour
             }
 
             used = false;
+            GameManager.instance.ordersCompleted++;
             DeleteOrder(newDish.GetComponent<Plato>().thisPlato);
             GameManager.instance.textAdvertencias.text = " ";
         }
@@ -174,6 +175,7 @@ public class Emplatado : MonoBehaviour
                 newDish.GetComponent<Plato>().thisPlato = platosSO[1];
             }
             used = false;
+            GameManager.instance.ordersCompleted++;
             DeleteOrder(newDish.GetComponent<Plato>().thisPlato);
             GameManager.instance.textAdvertencias.text = " ";
         }
@@ -196,6 +198,7 @@ public class Emplatado : MonoBehaviour
                 newDish.GetComponent<Plato>().thisPlato = platosSO[2];
             }
             used = false;
+            GameManager.instance.ordersCompleted++;
             DeleteOrder(newDish.GetComponent<Plato>().thisPlato);
             GameManager.instance.textAdvertencias.text = " ";
         }
@@ -216,6 +219,8 @@ public class Emplatado : MonoBehaviour
                 newDish.GetComponent<Plato>().thisPlato = platosSO[0];
             }
             used = false;
+            
+            GameManager.instance.ordersCompleted++;
             DeleteOrder(newDish.GetComponent<Plato>().thisPlato);
             GameManager.instance.textAdvertencias.text = " ";
         }

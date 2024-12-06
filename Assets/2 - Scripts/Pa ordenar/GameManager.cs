@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -18,10 +19,12 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI textAdvertencias;
     public bool pauseTimers;
 
-
+    public bool finalesComprobation = false;
+    public bool expulsadoPega = false;
     public int ordersCreated = 0;
-    
 
+    public int ordersCompleted = 0;
+    public bool matarJefe = false;
     private void Awake()
     {
         if (instance == null)
@@ -34,7 +37,13 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);  // Si ya existe una instancia, destruye este GameManager
         }
     }
-    
-    
+
+    private void Update()
+    {
+        if (ordersCompleted == 5)
+        {
+            matarJefe = true;
+        }
+    }
 }
 
