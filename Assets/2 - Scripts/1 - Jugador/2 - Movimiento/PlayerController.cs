@@ -28,18 +28,21 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        float h = Input.GetAxis("Horizontal") * playerSpeed * Time.deltaTime;
-        float v = Input.GetAxis("Vertical") * playerSpeed * Time.deltaTime;
-
-        transform.Translate(h, 0, v);
-
-        if(h != 0 || v != 0)
+        if (GameManager.instance.finalesComprobation == false)
         {
-            Anim.SetBool("Walking", true);
-        }
-        else
-        {
-            Anim.SetBool("Walking", false);
+            float h = Input.GetAxis("Horizontal") * playerSpeed * Time.deltaTime;
+            float v = Input.GetAxis("Vertical") * playerSpeed * Time.deltaTime;
+
+            transform.Translate(h, 0, v);
+
+            if(h != 0 || v != 0)
+            {
+                Anim.SetBool("Walking", true);
+            }
+            else
+            {
+                Anim.SetBool("Walking", false);
+            }
         }
     }
 

@@ -18,7 +18,8 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI textAdvertencias;
     public bool pauseTimers;
 
-
+    public bool finalesComprobation = false;
+    public bool expulsadoPega = false;
     public int ordersCreated = 0;
     
 

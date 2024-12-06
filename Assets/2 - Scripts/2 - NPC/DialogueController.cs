@@ -23,6 +23,14 @@ public class DialogueController : MonoBehaviour
     private int dialogueCounter;
     
     
+    
+    // Multi-press detection
+    private int pressCount;
+    private float multiPressWindow = 0.6f; // Tiempo en segundos para detectar múltiples pulsaciones
+    private float lastPressTime;
+
+    
+    
     //Dialogue Detection
     private bool PlayerIsOnArea;
     private int RandomIndex;
@@ -35,8 +43,30 @@ public class DialogueController : MonoBehaviour
 
     private void Update()
     {
-        if (PlayerIsOnArea && Input.GetKeyDown(KeyCode.E))
+        if (!PlayerIsOnArea || GameManager.instance.expulsadoPega) return;
+        if (Input.GetKeyDown(KeyCode.E))
         {
+            if (this.gameObject.tag == "Boss")
+            {
+                float currentTime = Time.time;
+             
+                // Verificar si la pulsación está dentro de la ventana de tiempo
+                if (currentTime - lastPressTime > multiPressWindow)
+                {
+                    pressCount = 0;
+                }
+
+                pressCount++;
+                lastPressTime = currentTime;
+
+                // Si se presionó "E" varias veces rápidamente
+                if (pressCount >= 7)
+                {
+                    Debug.Log("Tecla presionada 7 veces rápidamente!");
+                    MultiPressAudio();
+                    pressCount = 0; // Reinicia el contador
+                }
+            }
             DialogueTimeController();
 
         }
@@ -52,56 +82,57 @@ public class DialogueController : MonoBehaviour
     }
     public void DialogueTimeController()
     {
-        if (dialogueCounter == 0)
+        if (dialogueCounter == 0 &&
+            !GameManager.instance.expulsadoPega)
         {
             DialogueTMP.text = dialogue[0].dialogueText;
             audioSource.clip = dialogue[0].dialogueSound;
 
             audioSource.Play();
         }
-        else if (dialogueCounter == 1)
+        else if (dialogueCounter == 3 &&
+                 !GameManager.instance.expulsadoPega)
         {
             DialogueTMP.text = dialogue[1].dialogueText;
             audioSource.clip = dialogue[1].dialogueSound;
 
             audioSource.Play();
         }
-        else if (dialogueCounter == 2)
+        else if (dialogueCounter == 5 &&
+                 !GameManager.instance.expulsadoPega)
         {
             DialogueTMP.text = dialogue[2].dialogueText;
             audioSource.clip = dialogue[2].dialogueSound;
 
             audioSource.Play();   
         }
-        else if (dialogueCounter == 3)
+        else if (dialogueCounter == 7 &&
+                 !GameManager.instance.expulsadoPega)
         {
             DialogueTMP.text = dialogue[3].dialogueText;
             audioSource.clip = dialogue[3].dialogueSound;
 
             audioSource.Play();
         }
-        else if (dialogueCounter == 4)
+        else if (dialogueCounter == 9 &&
+                 !GameManager.instance.expulsadoPega)
         {
             DialogueTMP.text = dialogue[4].dialogueText;
             audioSource.clip = dialogue[4].dialogueSound;
 
             audioSource.Play();
         }
-        else if (dialogueCounter == 5)
-        {
-            DialogueTMP.text = dialogue[5].dialogueText;
-            audioSource.clip = dialogue[5].dialogueSound;
-
-            audioSource.Play();
-        }
-        else if (dialogueCounter == 6)
-        {
-            DialogueTMP.text = dialogue[6].dialogueText;
-            audioSource.clip = dialogue[6].dialogueSound;
-
-            audioSource.Play();
-        }
-  
+    }
+    
+    private void MultiPressAudio()
+    {
+        GameManager.instance.expulsadoPega = true;
+        GameManager.instance.finalesComprobation = true;
+        // Acción especial cuando se detectan múltiples pulsaciones rápidas
+        Debug.Log("Ejecutando acción especial por múltiples pulsaciones rápidas.");
+        DialogueTMP.text = dialogue[5].dialogueText;
+        audioSource.clip = dialogue[5].dialogueSound;
+        audioSource.Play();
     }
     private void OnTriggerEnter(Collider other)
     {

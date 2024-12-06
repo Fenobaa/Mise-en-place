@@ -13,6 +13,7 @@ TagManager:
   - CookingZone
   - Wall
   - TriggerOPT
+  - Boss
   layers:
   - Default
   - TransparentFX
