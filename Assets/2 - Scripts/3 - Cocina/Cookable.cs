@@ -42,47 +42,11 @@ public class Cookable : MonoBehaviour
                 break;
             case CookingState.Cooked:
                 objectRenderer.material.mainTexture = cookedTexture;
-                if (this.gameObject.name =="PotatoCut(Clone)")
-                {
-                    Transform child0 = transform.GetChild(0); 
-                    Renderer childRenderer0 = child0.GetComponent<Renderer>(); 
-                    childRenderer0.material.mainTexture = cookedTexture;
-                    
-                    Transform child1 = transform.GetChild(1); 
-                    Renderer childRenderer1 = child1.GetComponent<Renderer>(); 
-                    childRenderer1.material.mainTexture = cookedTexture;
-                    
-                    Transform child2 = transform.GetChild(2); 
-                    Renderer childRenderer2 = child2.GetComponent<Renderer>(); 
-                    childRenderer2.material.mainTexture = cookedTexture;
-                    
-                    Transform child3 = transform.GetChild(3); 
-                    Renderer childRenderer3 = child3.GetComponent<Renderer>(); 
-                    childRenderer3.material.mainTexture = cookedTexture;
-                }
+                CheckingCookedTextureChange();
                 break;
             case CookingState.Burned:
-                objectRenderer.material.mainTexture = burnedTexture;
-                if (this.gameObject.name =="PotatoCut(Clone)")
-                {
-                    
-                    Transform child0 = transform.GetChild(0); 
-                    Renderer childRenderer0 = child0.GetComponent<Renderer>(); 
-                    childRenderer0.material.mainTexture = burnedTexture;
-                    
-                    Transform child1 = transform.GetChild(1); 
-                    Renderer childRenderer1 = child1.GetComponent<Renderer>(); 
-                    childRenderer1.material.mainTexture = burnedTexture;
-                    
-                    Transform child2 = transform.GetChild(2); 
-                    Renderer childRenderer2 = child2.GetComponent<Renderer>(); 
-                    childRenderer2.material.mainTexture = burnedTexture;
-                    
-                    Transform child3 = transform.GetChild(3); 
-                    Renderer childRenderer3 = child3.GetComponent<Renderer>(); 
-                    childRenderer3.material.mainTexture = burnedTexture;
-                    
-                }
+                objectRenderer.material.mainTexture = burnedTexture; 
+                CheckingBurnedTextureChange();
                 isCooking = false;
                 break;
         }
@@ -110,6 +74,51 @@ public class Cookable : MonoBehaviour
 
     }
 
+    public void CheckingCookedTextureChange()
+    {
+        if (this.gameObject.name =="PotatoCut(Clone)")
+        {
+            Transform child0 = transform.GetChild(0); 
+            Renderer childRenderer0 = child0.GetComponent<Renderer>(); 
+            childRenderer0.material.mainTexture = cookedTexture;
+                    
+            Transform child1 = transform.GetChild(1); 
+            Renderer childRenderer1 = child1.GetComponent<Renderer>(); 
+            childRenderer1.material.mainTexture = cookedTexture;
+                    
+            Transform child2 = transform.GetChild(2); 
+            Renderer childRenderer2 = child2.GetComponent<Renderer>(); 
+            childRenderer2.material.mainTexture = cookedTexture;
+                    
+            Transform child3 = transform.GetChild(3); 
+            Renderer childRenderer3 = child3.GetComponent<Renderer>(); 
+            childRenderer3.material.mainTexture = cookedTexture;
+        }
+        
+    }
+
+    public void CheckingBurnedTextureChange()
+    {
+        if (this.gameObject.name =="PotatoCut(Clone)")
+        {
+            Transform child0 = transform.GetChild(0); 
+            Renderer childRenderer0 = child0.GetComponent<Renderer>(); 
+            childRenderer0.material.mainTexture = burnedTexture;
+                    
+            Transform child1 = transform.GetChild(1); 
+            Renderer childRenderer1 = child1.GetComponent<Renderer>(); 
+            childRenderer1.material.mainTexture = burnedTexture;
+                    
+            Transform child2 = transform.GetChild(2); 
+            Renderer childRenderer2 = child2.GetComponent<Renderer>(); 
+            childRenderer2.material.mainTexture = burnedTexture;
+                    
+            Transform child3 = transform.GetChild(3); 
+            Renderer childRenderer3 = child3.GetComponent<Renderer>(); 
+            childRenderer3.material.mainTexture = burnedTexture;
+        }
+    }
+    
     public void StartCooking()
     {
         if (cookingCoroutine == null && this.gameObject.transform.parent.name != "PotatoCut(Clone)")

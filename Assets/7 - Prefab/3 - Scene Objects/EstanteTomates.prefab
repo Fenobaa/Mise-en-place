@@ -143,7 +143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a407b9350783c9e40b4f1f99145c4363, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ingredientToGive: {fileID: 3294815723331764698, guid: 689d4a35e1f9a214bb6e15a537c6ac5b,
+  ingredientToGive: {fileID: 4349446092745921310, guid: a1e57a2d9aa6f184d830ce17cf12be59,
     type: 3}
 --- !u!54 &3899965346194591806
 Rigidbody:
@@ -315,7 +315,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a407b9350783c9e40b4f1f99145c4363, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ingredientToGive: {fileID: 3294815723331764698, guid: 689d4a35e1f9a214bb6e15a537c6ac5b,
+  ingredientToGive: {fileID: 4349446092745921310, guid: a1e57a2d9aa6f184d830ce17cf12be59,
     type: 3}
 --- !u!54 &6154781606201270186
 Rigidbody:
@@ -521,7 +521,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a407b9350783c9e40b4f1f99145c4363, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ingredientToGive: {fileID: 3294815723331764698, guid: 689d4a35e1f9a214bb6e15a537c6ac5b,
+  ingredientToGive: {fileID: 4349446092745921310, guid: a1e57a2d9aa6f184d830ce17cf12be59,
     type: 3}
 --- !u!54 &5248947244943814564
 Rigidbody:
