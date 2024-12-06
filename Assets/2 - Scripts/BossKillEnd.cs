@@ -52,6 +52,7 @@ public class BossKillEnd : MonoBehaviour
             brokenGlass.SetActive(false);
             panelNegro.SetActive(false);
             camAnimator.SetBool("GoodEnding", true);
+            
         }
     }
 
@@ -63,6 +64,11 @@ public class BossKillEnd : MonoBehaviour
         yield return new WaitForSeconds(11f);
         soundEffectsEnded = true;
         yield break;
+    }
+
+    IEnumerator waitforChange()
+    {
+        yield return new WaitForSeconds(25f);
     }
     private void OnTriggerEnter(Collider other)
     {

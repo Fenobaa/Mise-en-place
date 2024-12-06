@@ -23,7 +23,6 @@ public class Emplatado : MonoBehaviour
     public int tomate;
     [Space(10)] 
     public int papa;
-    public int spaghetti;
     public int berengena;
 
     private bool used;
@@ -70,14 +69,6 @@ public class Emplatado : MonoBehaviour
                 Destroy(ingredient);
             }
         }
-        else if (ingredient.name == "FideoCortado(Clone)")
-        {
-            spaghetti--;
-            if (used)
-            {
-                Destroy(ingredient);
-            }
-        }
         else if (ingredient.name == "EggplantCut(Clone)")
         {
             berengena--;
@@ -86,7 +77,7 @@ public class Emplatado : MonoBehaviour
                 Destroy(ingredient);
             }
         }
-        totalIngredients = animal + zapallo + tomate + papa + berengena + spaghetti;
+        totalIngredients = animal + zapallo + tomate + papa + berengena;
         
         currentIngredients.Remove(ingredient);
     }
@@ -120,14 +111,9 @@ public class Emplatado : MonoBehaviour
                 berengena++;
                 Debug.Log(berengena);
             }
-            else if (ingredient.name == "FideoCortado(Clone)")
-            {
-                spaghetti++;
-                Debug.Log(spaghetti);
-            }
         }
         
-        totalIngredients = animal + zapallo + tomate + papa + berengena + spaghetti;
+        totalIngredients = animal + zapallo + tomate + papa + berengena;
 
         PrepararPlato();
     }
@@ -144,12 +130,12 @@ public class Emplatado : MonoBehaviour
             
             if (newDish.GetComponent<Plato>() != null)
             {
-                newDish.GetComponent<Plato>().thisPlato = platosSO[3];
+                newDish.GetComponent<Plato>().thisPlato = platosSO[0];
             }
             else
             {
                 newDish.AddComponent<Plato>();
-                newDish.GetComponent<Plato>().thisPlato = platosSO[3];
+                newDish.GetComponent<Plato>().thisPlato = platosSO[0];
             }
 
             used = false;
@@ -179,44 +165,22 @@ public class Emplatado : MonoBehaviour
             DeleteOrder(newDish.GetComponent<Plato>().thisPlato);
             GameManager.instance.textAdvertencias.text = " ";
         }
-
-        else if (spaghetti > 0 && tomate > 0 && animal > 0) //Spaghetti boloñesa
-        {
-            GameObject newDish = Instantiate(dishes[2], whereInstanciate.position, Quaternion.identity);
-            used = true;
-            RemoveIngredient(currentIngredients.Find(x => x.name == "FideoCortado(Clone)"));
-            RemoveIngredient(currentIngredients.Find(x => x.name == "TomateCortado(Clone)"));
-            RemoveIngredient(currentIngredients.Find(x => x.name == "MEAT(Clone)"));
-
-            if (newDish.GetComponent<Plato>() != null)
-            {
-                newDish.GetComponent<Plato>().thisPlato = platosSO[2];
-            }
-            else
-            {
-                newDish.AddComponent<Plato>();
-                newDish.GetComponent<Plato>().thisPlato = platosSO[2];
-            }
-            used = false;
-            GameManager.instance.ordersCompleted++;
-            DeleteOrder(newDish.GetComponent<Plato>().thisPlato);
-            GameManager.instance.textAdvertencias.text = " ";
-        }
+        
         else if (papa > 0 && animal > 0) //Papas fritas con Carne
         {
-            GameObject newDish = Instantiate(dishes[3], whereInstanciate.position, Quaternion.identity);
+            GameObject newDish = Instantiate(dishes[2], whereInstanciate.position, Quaternion.identity);
             used = true;
             RemoveIngredient(currentIngredients.Find(x => x.name == "MEAT(Clone)"));
             RemoveIngredient(currentIngredients.Find(x => x.name == "PotatoCut(Clone)"));
 
             if (newDish.GetComponent<Plato>() != null)
             {
-                newDish.GetComponent<Plato>().thisPlato = platosSO[0];
+                newDish.GetComponent<Plato>().thisPlato = platosSO[2];
             }
             else
             {
                 newDish.AddComponent<Plato>();
-                newDish.GetComponent<Plato>().thisPlato = platosSO[0];
+                newDish.GetComponent<Plato>().thisPlato = platosSO[2];
             }
             used = false;
             
@@ -235,10 +199,11 @@ public class Emplatado : MonoBehaviour
         Debug.Log("setaeliminando");
         Inventory inventory = Inventory.instance;
         
-        foreach (GameObject panel in inventory.panelesPedidos)
+        for (int i = inventory.panelesPedidos.Count - 1; i >= 0; i--)
         {
-             PrefabUpdater prefabUpdater = panel.GetComponent<PrefabUpdater>();
-             
+            GameObject panel = inventory.panelesPedidos[i];
+            PrefabUpdater prefabUpdater = panel.GetComponent<PrefabUpdater>();
+        
             if (prefabUpdater.thisPlatoScriptable == platoSO)
             {
                 Destroy(panel);
@@ -257,11 +222,6 @@ public class Emplatado : MonoBehaviour
                 AddIngredient(other.gameObject);
             }
 
-        }
-
-        if (other.CompareTag("Draggable") && other.name == "NoodlePackage(Clone)")
-        {
-            AddIngredient(other.gameObject);
         }
     }
 

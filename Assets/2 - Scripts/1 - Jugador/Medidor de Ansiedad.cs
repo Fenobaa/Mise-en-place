@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MedidordeAnsiedad : MonoBehaviour
@@ -33,6 +34,7 @@ public class MedidordeAnsiedad : MonoBehaviour
             panelNegro.SetActive(true);
             audioSource.clip = clip;
             audioSource.Play();
+            SceneManager.LoadScene("Créditos");
             
         } 
         if (GameManager.instance.finalesComprobation == false)
@@ -90,7 +92,7 @@ public class MedidordeAnsiedad : MonoBehaviour
         }
         if (gameManager.puntosdeAnsiedad >= 0.4f && gameManager.puntosdeAnsiedad <= 0.6f && panelRojoImage.color.a != 0.3f)
         {
-            colorActual.a = 0.3f;
+            colorActual.a = 0.2f;
             panelRojoImage.color = colorActual;
         }
 

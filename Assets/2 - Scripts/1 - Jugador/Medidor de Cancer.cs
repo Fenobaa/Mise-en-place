@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
@@ -45,7 +46,8 @@ public class MedidordeCancer : MonoBehaviour
             panelNegro.SetActive(true);
             audioSource.clip = clip;
             audioSource.Play();
-            
+            SceneManager.LoadScene("Créditos");
+
 
         }
         if (Input.GetKeyDown(KeyCode.Mouse1) && Cambio.cigarro.activeSelf == true)

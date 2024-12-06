@@ -42,10 +42,12 @@ public class Cookable : MonoBehaviour
                 break;
             case CookingState.Cooked:
                 objectRenderer.material.mainTexture = cookedTexture;
+                SFXManager.Instance.DingCook();
                 CheckingCookedTextureChange();
                 break;
             case CookingState.Burned:
                 objectRenderer.material.mainTexture = burnedTexture; 
+                SFXManager.Instance.DingBurn();
                 CheckingBurnedTextureChange();
                 isCooking = false;
                 break;
@@ -54,6 +56,16 @@ public class Cookable : MonoBehaviour
     
     private void Update()
     {
+        if (CookingState.Cooked == currentState && objectRenderer.material.mainTexture != cookedTexture)
+        {
+            objectRenderer.material.mainTexture = cookedTexture;
+
+        }
+        if (CookingState.Burned == currentState && objectRenderer.material.mainTexture != burnedTexture)
+        {
+            objectRenderer.material.mainTexture = burnedTexture;
+
+        }
         if (GameManager.instance.pauseTimers == true )
         {
             if (cookingCoroutine != null)
@@ -121,7 +133,7 @@ public class Cookable : MonoBehaviour
     
     public void StartCooking()
     {
-        if (cookingCoroutine == null && this.gameObject.transform.parent.name != "PotatoCut(Clone)")
+        if (cookingCoroutine == null)
         {
             cookingCoroutine = StartCoroutine(CookingRoutine());
         }

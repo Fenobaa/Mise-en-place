@@ -117,17 +117,25 @@ public class DialogueController : MonoBehaviour
 
             audioSource.Play();
         }
-        else if (dialogueCounter == 9 &&
-                 !GameManager.instance.expulsadoPega 
+        else if (dialogueCounter == 7 &&
+                 !GameManager.instance.expulsadoPega
                  && !GameManager.instance.matarJefe )
         {
             audioSource.clip = dialogue[4].dialogueSound;
 
             audioSource.Play();
         }
-        else if (GameManager.instance.matarJefe)
+        else if (dialogueCounter == 9 &&
+                 !GameManager.instance.expulsadoPega 
+                 && !GameManager.instance.matarJefe )
         {
             audioSource.clip = dialogue[5].dialogueSound;
+
+            audioSource.Play();
+        }
+        else if (GameManager.instance.matarJefe)
+        {
+            audioSource.clip = dialogue[6].dialogueSound;
         }
     }
     

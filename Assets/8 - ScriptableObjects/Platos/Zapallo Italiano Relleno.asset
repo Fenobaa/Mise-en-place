@@ -15,7 +15,7 @@ MonoBehaviour:
   PlatoName: Zapallo Italiano Relleno
   PlatoSprite: {fileID: 0}
   Ingredient1: Animal
-  Ingredient1Sprite: {fileID: 0}
+  Ingredient1Sprite: {fileID: 21300000, guid: 4af933c5bc82b7048863e056b10fb7dc, type: 3}
   Ingredient2: Tomate
   Ingredient2Sprite: {fileID: 0}
   Ingredient3: zapallo

@@ -9,8 +9,8 @@ public class Inventory : MonoBehaviour
 {
     public static Inventory instance;
     public List<GameObject> panelesPedidos;
-    public PlatosScriptable[] platos = new PlatosScriptable[4];
-    private PlatosScriptable[] pedidos = new PlatosScriptable[4];
+    public PlatosScriptable[] platos = new PlatosScriptable[3];
+    private PlatosScriptable[] pedidos = new PlatosScriptable[3];
     public GameObject platoPanelPB;
     public RectTransform pedidosPanel;
 

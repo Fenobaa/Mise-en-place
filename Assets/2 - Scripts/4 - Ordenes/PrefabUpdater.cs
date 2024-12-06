@@ -73,8 +73,6 @@ public class PrefabUpdater : MonoBehaviour
     {
         
        TMPPlatoName = transform.Find("PlatoName").GetComponent<TextMeshProUGUI>();
-       ImagePlato = transform.Find("PlatoImage").GetComponent<Image>();
-
 
        ImageIngredient1 = transform.Find("Ingredient1Image").GetComponent<Image>();
 
@@ -90,7 +88,6 @@ public class PrefabUpdater : MonoBehaviour
     {
         if (TMPPlatoName.text != thisPlatoScriptable.PlatoName)
         {
-            ImagePlato.sprite = thisPlatoScriptable.PlatoSprite;
             TMPPlatoName.text = thisPlatoScriptable.PlatoName;
         }
         if (ImageIngredient1.sprite != thisPlatoScriptable.Ingredient1Sprite)

@@ -18,7 +18,6 @@ public class CutStation : MonoBehaviour
     [SerializeField] int berengenaCount;
     [SerializeField] int papaCount;
     [SerializeField] int zapalloCount;
-    [SerializeField] int fideosCount;
     private void Start()
     {
         if (slicedIngredients.Length == 0)
@@ -33,7 +32,6 @@ public class CutStation : MonoBehaviour
         berengenaCount = 0;
         papaCount = 0;
         zapalloCount = 0;
-        fideosCount = 0;
         
         
         canInteract = false;
@@ -45,16 +43,18 @@ public class CutStation : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Mouse1) && addedIngredients.Count > 0)
             {
-                if (tomateCount > 0) 
+                if (tomateCount > 0)
                 {
+                    SFXManager.Instance.Kill();
                     currentSlicedIngredient = Instantiate(slicedIngredients[0], spawnPoint.transform.position, Quaternion.identity);
                     currentSlicedIngredient = Instantiate(slicedIngredients[0], spawnPoint.transform.position, Quaternion.identity);
                     currentSlicedIngredient = Instantiate(slicedIngredients[0], spawnPoint.transform.position, Quaternion.identity);
                     Debug.Log("Tomate sliced");
                     tomateCount--;
                 }
-                else if (animalCount > 0) 
+                else if (animalCount > 0)
                 {
+                    SFXManager.Instance.Kill();
                     currentSlicedIngredient = Instantiate(slicedIngredients[1], spawnPoint.transform.position, Quaternion.identity);
                     currentSlicedIngredient = Instantiate(slicedIngredients[1], spawnPoint.transform.position, Quaternion.identity);
                     currentSlicedIngredient = Instantiate(slicedIngredients[1], spawnPoint.transform.position, Quaternion.identity);
@@ -63,6 +63,7 @@ public class CutStation : MonoBehaviour
                 }
                 else if (berengenaCount > 0)
                 {
+                    SFXManager.Instance.Kill();
                     currentSlicedIngredient = Instantiate(slicedIngredients[2], spawnPoint.transform.position, Quaternion.identity);
                     currentSlicedIngredient = Instantiate(slicedIngredients[2], spawnPoint.transform.position, Quaternion.identity);
                     currentSlicedIngredient = Instantiate(slicedIngredients[2], spawnPoint.transform.position, Quaternion.identity);
@@ -71,6 +72,7 @@ public class CutStation : MonoBehaviour
                 }
                 else if (papaCount > 0)
                 {
+                    SFXManager.Instance.Kill();
                     currentSlicedIngredient = Instantiate(slicedIngredients[3], spawnPoint.transform.position, Quaternion.identity);
                     currentSlicedIngredient = Instantiate(slicedIngredients[3], spawnPoint.transform.position, Quaternion.identity);
                     currentSlicedIngredient = Instantiate(slicedIngredients[3], spawnPoint.transform.position, Quaternion.identity);
@@ -79,20 +81,13 @@ public class CutStation : MonoBehaviour
                 }
                 else if (zapalloCount > 0)
                 {
+                    SFXManager.Instance.Kill();
                     currentSlicedIngredient = Instantiate(slicedIngredients[4], spawnPoint.transform.position, Quaternion.identity);
                     currentSlicedIngredient = Instantiate(slicedIngredients[4], spawnPoint.transform.position, Quaternion.identity);
                     currentSlicedIngredient = Instantiate(slicedIngredients[4], spawnPoint.transform.position, Quaternion.identity);
                     Debug.Log("Zapallo sliced");
                     zapalloCount--;
                 }
-                else if (fideosCount > 0)
-                {
-                    currentSlicedIngredient = Instantiate(slicedIngredients[5], spawnPoint.transform.position, Quaternion.identity);
-                    currentSlicedIngredient = Instantiate(slicedIngredients[5], spawnPoint.transform.position, Quaternion.identity);
-                    currentSlicedIngredient = Instantiate(slicedIngredients[5], spawnPoint.transform.position, Quaternion.identity);
-                }
-                
-        
                 RemoveUsedIngredients();
             }
         }
@@ -123,11 +118,6 @@ public class CutStation : MonoBehaviour
         else if (ingredient.name == "Zucchini(Clone)")
         {
             zapalloCount++;
-            addedIngredients.Add(ingredient);
-        }
-        else if (ingredient.name == "NoodlePackage(Clone)")
-        {
-            fideosCount++;
             addedIngredients.Add(ingredient);
         }
     }
@@ -178,14 +168,10 @@ public class CutStation : MonoBehaviour
             zapalloCount--;
             addedIngredients.Remove(ingredient);
         }
-        else if (ingredient.name == "NoodlePackage(Clone)")
-        {
-            fideosCount--;
-            addedIngredients.Remove(ingredient);
-        }
+
         else if (ingredient.name == "TomateCortado(Clone)" || ingredient.name == "MEAT(Clone)" ||
                  ingredient.name == "EggplantCut(Clone)"|| ingredient.name == "PotatoCut" ||
-                 ingredient.name == "ZucchiniCut(Clone)" || ingredient.name == "NoodlePackageCut(Clone)" )
+                 ingredient.name == "ZucchiniCut(Clone)" )
         {
             addedIngredients.Remove(ingredient);
             currentSlicedIngredient = null;

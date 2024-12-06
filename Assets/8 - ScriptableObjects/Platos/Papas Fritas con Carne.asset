@@ -17,6 +17,6 @@ MonoBehaviour:
   Ingredient1: Papa
   Ingredient1Sprite: {fileID: 0}
   Ingredient2: Animal
-  Ingredient2Sprite: {fileID: 0}
+  Ingredient2Sprite: {fileID: 21300000, guid: 4af933c5bc82b7048863e056b10fb7dc, type: 3}
   Ingredient3: 
   Ingredient3Sprite: {fileID: 0}
