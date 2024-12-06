@@ -4,16 +4,18 @@ using Unity.VisualScripting;
 using UnityEditor.AnimatedValues;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Opciones : MonoBehaviour
 {
-    public GameObject Panel;
+    public GameObject Botones;
+    public GameObject Sonido;
  
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("TriggerOPT"))
         {
-            Panel.SetActive(true);
+            Botones.SetActive(true);
         }
     }
 
@@ -21,7 +23,7 @@ public class Opciones : MonoBehaviour
     {
         if (collision.gameObject.tag == "TriggerOPT")
         {
-            Panel.SetActive(true);
+            Botones.SetActive(true);
         }
     }
 
