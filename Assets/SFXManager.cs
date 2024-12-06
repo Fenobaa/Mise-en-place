@@ -7,9 +7,7 @@ public class SFXManager : MonoBehaviour
 {
     public static SFXManager Instance;
 
-    public AudioClip dingCook, dingBurn, drawKnife, goodEnding, kill, sizzle, stabCeramic;
-
-    public AudioClip descanso1, descanso1, descanso1, descanso1, descanso1,
+    public AudioClip dingCook, dingBurn, drawKnife, goodEnding, kill, stabCeramic;
     void Awake()
     {
         if (Instance == null)
