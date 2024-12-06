@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -25,6 +22,7 @@ public class GameManager : MonoBehaviour
 
     public int ordersCompleted = 0;
     public bool matarJefe = false;
+    public bool canKill = false;
     private void Awake()
     {
         if (instance == null)
