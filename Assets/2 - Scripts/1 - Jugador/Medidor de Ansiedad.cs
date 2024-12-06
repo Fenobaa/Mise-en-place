@@ -12,7 +12,7 @@ public class MedidordeAnsiedad : MonoBehaviour
     private float segundero = 0;
     public bool AnsiedadSuma = true;
     public GameObject panelNegro;
-    public AudioSource audio;
+    public AudioSource audioSource;
     public AudioClip clip;
     
     void Start()
@@ -31,8 +31,8 @@ public class MedidordeAnsiedad : MonoBehaviour
             GameManager.instance.gameOver = true;
             GameManager.instance.finalesComprobation = true;
             panelNegro.SetActive(true);
-            audio.clip = clip;
-            audio.Play();
+            audioSource.clip = clip;
+            audioSource.Play();
             
         } 
         if (GameManager.instance.finalesComprobation == false)

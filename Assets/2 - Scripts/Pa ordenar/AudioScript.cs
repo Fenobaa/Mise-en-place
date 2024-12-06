@@ -6,17 +6,32 @@ using UnityEngine.Audio;
 
 public class AudioScript : MonoBehaviour
 {
+    public static AudioScript Instance;
+
     public AudioMixer Mixer;
 
     public Slider masterSlider, bgmSlider, sfxSlider;
 
+    public AudioSource sfxSource;
+    public AudioSource bgmSource;
     //void Update()
     //{
     //    Mixer.SetFloat("ExposedMaster", masterSlider.value);
     //    Mixer.SetFloat("ExposedBGM", bgmSlider.value);
     //    Mixer.SetFloat("ExposedSFX", sfxSlider.value);
     //}
-
+    void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
     public void SetBGMVolume()
     {
         float volume = bgmSlider.value;
@@ -34,5 +49,7 @@ public class AudioScript : MonoBehaviour
         float volume = sfxSlider.value;
         Mixer.SetFloat("ExposedSFX", volume);
     }
+
+
 
 }

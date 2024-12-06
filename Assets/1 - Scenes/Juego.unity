@@ -14,10 +14,10 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
-  m_Fog: 0
+  m_Fog: 1
   m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FogMode: 3
-  m_FogDensity: 0.01
+  m_FogDensity: 0.05
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
@@ -9164,7 +9164,7 @@ MonoBehaviour:
   bossIddle: {fileID: 919132148111988919}
   bossDeath: {fileID: 919132147498598950}
   canvas: {fileID: 1883069192}
-  camera: {fileID: 9149751194029655262}
+  cam: {fileID: 0}
   cameraCinemachine: {fileID: 1857777850}
 --- !u!82 &803891250
 AudioSource:
@@ -12699,7 +12699,7 @@ MonoBehaviour:
   MedidorAnsiedad: {fileID: 1750063988}
   AnsiedadSuma: 1
   panelNegro: {fileID: 0}
-  audio: {fileID: 0}
+  audioSource: {fileID: 0}
   clip: {fileID: 0}
 --- !u!1 &1171775220
 GameObject:
@@ -13714,10 +13714,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_IsGlobal: 1
-  priority: 0
+  priority: 1
   blendDistance: 0
   weight: 1
-  sharedProfile: {fileID: 11400000, guid: a6560a915ef98420e9faacc1c7438823, type: 2}
+  sharedProfile: {fileID: 11400000, guid: 7bbe35cdf5d69e14abbb03eccedaa5bd, type: 2}
 --- !u!1 &1282723542
 GameObject:
   m_ObjectHideFlags: 0
@@ -19537,6 +19537,7 @@ MonoBehaviour:
   ordersCompleted: 0
   matarJefe: 0
   canKill: 0
+  gameOver: 0
 --- !u!4 &1719834356
 Transform:
   m_ObjectHideFlags: 0
@@ -79250,6 +79251,21 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9069692043602257237, guid: bf6738beedbe78443a168c3d0ac8baa7,
+        type: 3}
+      propertyPath: m_Dithering
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9069692043602257237, guid: bf6738beedbe78443a168c3d0ac8baa7,
+        type: 3}
+      propertyPath: m_VolumeTrigger
+      value: 
+      objectReference: {fileID: 1272287901}
+    - target: {fileID: 9069692043602257237, guid: bf6738beedbe78443a168c3d0ac8baa7,
+        type: 3}
+      propertyPath: m_VolumeFrameworkUpdateModeOption
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -79258,12 +79274,6 @@ PrefabInstance:
 --- !u!1 &9149751194029655261 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4519871643205555432, guid: bf6738beedbe78443a168c3d0ac8baa7,
-    type: 3}
-  m_PrefabInstance: {fileID: 9149751194029655260}
-  m_PrefabAsset: {fileID: 0}
---- !u!20 &9149751194029655262 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 1239535883285605799, guid: bf6738beedbe78443a168c3d0ac8baa7,
     type: 3}
   m_PrefabInstance: {fileID: 9149751194029655260}
   m_PrefabAsset: {fileID: 0}

@@ -17,7 +17,7 @@ public class MedidordeCancer : MonoBehaviour
     [SerializeField] private double UsoCigarro;
     private bool MuerteporCancer;
     public GameObject panelNegro;
-    public AudioSource audio;
+    public AudioSource audioSource;
     public AudioClip clip;
     private bool isOnCD;
     public Animator animator;
@@ -43,8 +43,8 @@ public class MedidordeCancer : MonoBehaviour
             GameManager.instance.gameOver = true;
             GameManager.instance.finalesComprobation = true;
             panelNegro.SetActive(true);
-            audio.clip = clip;
-            audio.Play();
+            audioSource.clip = clip;
+            audioSource.Play();
             
 
         }

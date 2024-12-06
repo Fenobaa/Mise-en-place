@@ -19,7 +19,7 @@ public class BossKillEnd : MonoBehaviour
     public GameObject canvas;
     
     
-    public Camera camera;
+    public Camera cam;
     public GameObject cameraCinemachine;
     private Animator camAnimator;
 
@@ -44,7 +44,7 @@ public class BossKillEnd : MonoBehaviour
         if (soundEffectsEnded)
         {
             cameraCinemachine.SetActive(true);
-            camera.enabled = false;
+            cam.enabled = false;
 
             Player.SetActive(false);
             bossIddle.SetActive(false);
