@@ -7,7 +7,9 @@ public class SFXManager : MonoBehaviour
 {
     public static SFXManager Instance;
 
-    public AudioClip dingCook, dingBurn, drawKnife, goodEnding, kill1, kill2, kill3, sizzle, stabCeramic, stabMetal;
+    public AudioClip dingCook, dingBurn, drawKnife, goodEnding, kill, sizzle, stabCeramic;
+
+    public AudioClip descanso1, descanso1, descanso1, descanso1, descanso1,
     void Awake()
     {
         if (Instance == null)
@@ -22,6 +24,33 @@ public class SFXManager : MonoBehaviour
     }
     public void Kill()
     {
+        AudioScript.Instance.ReplaceSFXClip(kill);
+        AudioScript.Instance.PlaySFX(kill);
+    }
 
+    public void DingCook()
+    {
+        AudioScript.Instance.ReplaceSFXClip(dingCook);
+        AudioScript.Instance.PlaySFX(dingCook);
+    }
+    public void DingBurn()
+    {
+        AudioScript.Instance.ReplaceSFXClip(dingBurn);
+        AudioScript.Instance.PlaySFX(dingBurn);
+    }
+    public void DrawKnife()
+    {
+        AudioScript.Instance.ReplaceSFXClip(drawKnife);
+        AudioScript.Instance.PlaySFX(drawKnife);
+    }
+    public void StabCeramic()
+    {
+        AudioScript.Instance.ReplaceSFXClip(stabCeramic);
+        AudioScript.Instance.PlaySFX(stabCeramic);
+    }
+    public void GoodEnding()
+    {
+        AudioScript.Instance.ReplaceSFXClip(goodEnding);
+        AudioScript.Instance.PlaySFX(goodEnding);
     }
 }

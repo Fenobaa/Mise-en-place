@@ -13,7 +13,8 @@ public class AudioScript : MonoBehaviour
     public Slider masterSlider, bgmSlider, sfxSlider;
 
     public AudioSource sfxSource;
-    public AudioSource bgmSource;
+    public AudioSource bgmSource1;
+    public AudioSource bgmSource2;
     //void Update()
     //{
     //    Mixer.SetFloat("ExposedMaster", masterSlider.value);
@@ -50,6 +51,15 @@ public class AudioScript : MonoBehaviour
         Mixer.SetFloat("ExposedSFX", volume);
     }
 
+    public void PlaySFX(AudioClip clip)
+    {
+        sfxSource.clip = clip;
+        sfxSource.Play();
+    }
 
+    public void ReplaceSFXClip(AudioClip newClip)
+    {
+        sfxSource.clip = newClip;
+    }
 
 }
