@@ -160,7 +160,7 @@ public class Emplatado : MonoBehaviour
 
         else if (berengena > 0 && tomate > 0 && zapallo > 0) //Ratatouille
         {
-            GameObject newDish = Instantiate(dishes[0], whereInstanciate.position, Quaternion.identity);
+            GameObject newDish = Instantiate(dishes[1], whereInstanciate.position, Quaternion.identity);
             used = true;
             RemoveIngredient(currentIngredients.Find(x => x.name == "EggplantCut(Clone)"));
             RemoveIngredient(currentIngredients.Find(x => x.name == "TomateCortado(Clone)"));
@@ -182,7 +182,7 @@ public class Emplatado : MonoBehaviour
 
         else if (spaghetti > 0 && tomate > 0 && animal > 0) //Spaghetti boloñesa
         {
-            GameObject newDish = Instantiate(dishes[0], whereInstanciate.position, Quaternion.identity);
+            GameObject newDish = Instantiate(dishes[2], whereInstanciate.position, Quaternion.identity);
             used = true;
             RemoveIngredient(currentIngredients.Find(x => x.name == "NoodlePackage(Clone)"));
             RemoveIngredient(currentIngredients.Find(x => x.name == "TomateCortado(Clone)"));
@@ -202,9 +202,9 @@ public class Emplatado : MonoBehaviour
             DeleteOrder(newDish.GetComponent<Plato>().thisPlato);
             GameManager.instance.textAdvertencias.text = " ";
         }
-        else if (papa > 0 && animal > 0) //Carne con pure
+        else if (papa > 0 && animal > 0) //Papas fritas con Carne
         {
-            GameObject newDish = Instantiate(dishes[0], whereInstanciate.position, Quaternion.identity);
+            GameObject newDish = Instantiate(dishes[3], whereInstanciate.position, Quaternion.identity);
             used = true;
             RemoveIngredient(currentIngredients.Find(x => x.name == "MEAT(Clone)"));
             RemoveIngredient(currentIngredients.Find(x => x.name == "PotatoCut(Clone)"));
