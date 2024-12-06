@@ -162,7 +162,7 @@ public class Emplatado : MonoBehaviour
         {
             GameObject newDish = Instantiate(dishes[0], whereInstanciate.position, Quaternion.identity);
             used = true;
-            RemoveIngredient(currentIngredients.Find(x => x.name == "EggpantCut(Clone)"));
+            RemoveIngredient(currentIngredients.Find(x => x.name == "EggplantCut(Clone)"));
             RemoveIngredient(currentIngredients.Find(x => x.name == "TomateCortado(Clone)"));
             RemoveIngredient(currentIngredients.Find(x => x.name == "ZucchiniCut(Clone)"));
             if (newDish.GetComponent<Plato>() != null)

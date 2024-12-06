@@ -31,7 +31,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 4eed25cf39f9c2d4e9c68d0db5d3ea3f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.077162944
+      value: 0.077163205
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4eed25cf39f9c2d4e9c68d0db5d3ea3f,
         type: 3}
@@ -41,37 +41,37 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 4eed25cf39f9c2d4e9c68d0db5d3ea3f,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7660445
+      value: 0.59317076
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4eed25cf39f9c2d4e9c68d0db5d3ea3f,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0.49577123
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4eed25cf39f9c2d4e9c68d0db5d3ea3f,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.6427876
+      value: 0.48837972
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4eed25cf39f9c2d4e9c68d0db5d3ea3f,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0.40477717
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4eed25cf39f9c2d4e9c68d0db5d3ea3f,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: -11.115
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4eed25cf39f9c2d4e9c68d0db5d3ea3f,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 80
+      value: 88.167
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4eed25cf39f9c2d4e9c68d0db5d3ea3f,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: -79.386
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4eed25cf39f9c2d4e9c68d0db5d3ea3f,
         type: 3}
