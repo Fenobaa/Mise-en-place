@@ -71,7 +71,7 @@ public class BossKillEnd : MonoBehaviour
             Debug.Log("si");
             if (GameManager.instance.matarJefe == true)
             {
-                GameManager.instance.textAdvertencias.text = "Presiona click izquierdo para asesinar a tu jefe";
+                GameManager.instance.textAdvertencias.text = "Presiona click izquierdo para asesinar";
                 GameManager.instance.canKill = true;
             }
             

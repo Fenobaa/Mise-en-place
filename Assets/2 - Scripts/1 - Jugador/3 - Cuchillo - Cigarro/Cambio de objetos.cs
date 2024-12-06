@@ -11,6 +11,7 @@ public class Cambiodeobjetos : MonoBehaviour
 
     public GameObject encendedor;
     
+    public Animator animator;
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
@@ -18,6 +19,7 @@ public class Cambiodeobjetos : MonoBehaviour
             GameManager.instance.pauseTimers = true;
             cuchillo.SetActive(false);
             cigarro.SetActive(true);
+            animator.SetBool("Smoke", true);
             encendedor.SetActive(true);
         }
     }
@@ -27,6 +29,7 @@ public class Cambiodeobjetos : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             GameManager.instance.pauseTimers = false;
+            animator.SetBool("Smoke", false);
             cigarro.SetActive(false);  
             encendedor.SetActive(false);
             cuchillo.SetActive(true);

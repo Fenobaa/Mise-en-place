@@ -11,7 +11,10 @@ public class MedidordeAnsiedad : MonoBehaviour
 
     private float segundero = 0;
     public bool AnsiedadSuma = true;
-
+    public GameObject panelNegro;
+    public AudioSource audio;
+    public AudioClip clip;
+    
     void Start()
     {
         panelRojo = GameObject.Find("Panel Rojo");
@@ -23,6 +26,15 @@ public class MedidordeAnsiedad : MonoBehaviour
 
     void Update()
     {
+        if (MedidorAnsiedad.fillAmount == 1 && !GameManager.instance.gameOver)
+        {
+            GameManager.instance.gameOver = true;
+            GameManager.instance.finalesComprobation = true;
+            panelNegro.SetActive(true);
+            audio.clip = clip;
+            audio.Play();
+            
+        } 
         if (GameManager.instance.finalesComprobation == false)
         {
             if (gameManager.puntosdeAnsiedad != 1 && gameManager.pauseTimers == false)
@@ -47,7 +59,7 @@ public class MedidordeAnsiedad : MonoBehaviour
                     segundero += Time.deltaTime;
                     if (segundero >= 1)
                     {
-                        gameManager.puntosdeAnsiedad += 0.001f * gameManager.MultiplicadordeAnsiedad;
+                        gameManager.puntosdeAnsiedad += 0.005f * gameManager.MultiplicadordeAnsiedad;
                         segundero = 0;
                     }
                 }

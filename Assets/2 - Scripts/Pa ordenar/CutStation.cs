@@ -18,6 +18,7 @@ public class CutStation : MonoBehaviour
     [SerializeField] int berengenaCount;
     [SerializeField] int papaCount;
     [SerializeField] int zapalloCount;
+    [SerializeField] int fideosCount;
     private void Start()
     {
         if (slicedIngredients.Length == 0)
@@ -32,6 +33,7 @@ public class CutStation : MonoBehaviour
         berengenaCount = 0;
         papaCount = 0;
         zapalloCount = 0;
+        fideosCount = 0;
         
         
         canInteract = false;
@@ -83,6 +85,12 @@ public class CutStation : MonoBehaviour
                     Debug.Log("Zapallo sliced");
                     zapalloCount--;
                 }
+                else if (fideosCount > 0)
+                {
+                    currentSlicedIngredient = Instantiate(slicedIngredients[5], spawnPoint.transform.position, Quaternion.identity);
+                    currentSlicedIngredient = Instantiate(slicedIngredients[5], spawnPoint.transform.position, Quaternion.identity);
+                    currentSlicedIngredient = Instantiate(slicedIngredients[5], spawnPoint.transform.position, Quaternion.identity);
+                }
                 
         
                 RemoveUsedIngredients();
@@ -117,6 +125,11 @@ public class CutStation : MonoBehaviour
             zapalloCount++;
             addedIngredients.Add(ingredient);
         }
+        else if (ingredient.name == "NoodlePackage(Clone)")
+        {
+            fideosCount++;
+            addedIngredients.Add(ingredient);
+        }
     }
     
     void RemoveUsedIngredients()
@@ -125,7 +138,7 @@ public class CutStation : MonoBehaviour
         {
             var item = addedIngredients[i];
             if ( item.name == "Tomate(Clone)" || item.name == "Animal(Clone)" || item.name == "Eggplant(Clone)" ||
-                 item.name == "Potato(Clone)" || item.name == "Zucchini(Clone)")
+                 item.name == "Potato(Clone)" || item.name == "Zucchini(Clone)" || item.name == "NoodlePackage(Clone)" )
             {
                 addedIngredients.RemoveAt(i);
                 Destroy(item);
@@ -165,9 +178,14 @@ public class CutStation : MonoBehaviour
             zapalloCount--;
             addedIngredients.Remove(ingredient);
         }
+        else if (ingredient.name == "NoodlePackage(Clone)")
+        {
+            fideosCount--;
+            addedIngredients.Remove(ingredient);
+        }
         else if (ingredient.name == "TomateCortado(Clone)" || ingredient.name == "MEAT(Clone)" ||
                  ingredient.name == "EggplantCut(Clone)"|| ingredient.name == "PotatoCut" ||
-                 ingredient.name == "ZucchiniCut(Clone)" )
+                 ingredient.name == "ZucchiniCut(Clone)" || ingredient.name == "NoodlePackageCut(Clone)" )
         {
             addedIngredients.Remove(ingredient);
             currentSlicedIngredient = null;
@@ -186,13 +204,7 @@ public class CutStation : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            GameManager.instance.textIndicaciones.text = "Presiona click derecho para cortar";
-        }
-    }
+
 
     void OnTriggerExit(Collider other)
     {
@@ -205,9 +217,6 @@ public class CutStation : MonoBehaviour
             canInteract = !canInteract;
         }
         
-        if (other.gameObject.CompareTag("Player"))
-        {
-            GameManager.instance.textIndicaciones.text = " ";
-        }
+
     }
 }

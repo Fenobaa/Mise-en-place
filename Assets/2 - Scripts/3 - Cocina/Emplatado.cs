@@ -70,7 +70,7 @@ public class Emplatado : MonoBehaviour
                 Destroy(ingredient);
             }
         }
-        else if (ingredient.name == "NoodlePackage(Clone)")
+        else if (ingredient.name == "FideoCortado(Clone)")
         {
             spaghetti--;
             if (used)
@@ -120,7 +120,7 @@ public class Emplatado : MonoBehaviour
                 berengena++;
                 Debug.Log(berengena);
             }
-            else if (ingredient.name == "NoodlePackage(Clone)")
+            else if (ingredient.name == "FideoCortado(Clone)")
             {
                 spaghetti++;
                 Debug.Log(spaghetti);
@@ -184,7 +184,7 @@ public class Emplatado : MonoBehaviour
         {
             GameObject newDish = Instantiate(dishes[2], whereInstanciate.position, Quaternion.identity);
             used = true;
-            RemoveIngredient(currentIngredients.Find(x => x.name == "NoodlePackage(Clone)"));
+            RemoveIngredient(currentIngredients.Find(x => x.name == "FideoCortado(Clone)"));
             RemoveIngredient(currentIngredients.Find(x => x.name == "TomateCortado(Clone)"));
             RemoveIngredient(currentIngredients.Find(x => x.name == "MEAT(Clone)"));
 
@@ -226,7 +226,7 @@ public class Emplatado : MonoBehaviour
         }
         else if (totalIngredients > 0)
         {
-            GameManager.instance.textAdvertencias.text = "No hay suficientes ingredientes";
+            //GameManager.instance.textAdvertencias.text = "No hay suficientes ingredientes";
         }
     }
 

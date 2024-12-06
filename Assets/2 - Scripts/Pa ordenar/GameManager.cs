@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     public int ordersCompleted = 5;
     public bool matarJefe = false;
     public bool canKill = false;
+    public bool gameOver = false;
     private void Awake()
     {
         if (instance == null)

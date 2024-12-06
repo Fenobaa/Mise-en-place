@@ -15,8 +15,8 @@ MonoBehaviour:
   PlatoName: "Spaghetti Bolo\xF1esa"
   PlatoSprite: {fileID: 0}
   Ingredient1: Fideos
-  Ingredient1Sprite: {fileID: 0}
+  Ingredient1Sprite: {fileID: 21300000, guid: d5ab984e652a9f84b98ef196b07d4f7b, type: 3}
   Ingredient2: Tomate
-  Ingredient2Sprite: {fileID: 0}
+  Ingredient2Sprite: {fileID: 21300000, guid: 86bf1228fdefb7c4294237dadaa0ed25, type: 3}
   Ingredient3: Animal
   Ingredient3Sprite: {fileID: 0}

@@ -15,8 +15,8 @@ MonoBehaviour:
   PlatoName: Ratatouille
   PlatoSprite: {fileID: 0}
   Ingredient1: Berengena
-  Ingredient1Sprite: {fileID: 0}
+  Ingredient1Sprite: {fileID: 21300000, guid: aafd1f53d6072d645acbeab0876fd77e, type: 3}
   Ingredient2: Tomate
-  Ingredient2Sprite: {fileID: 0}
+  Ingredient2Sprite: {fileID: 21300000, guid: 86bf1228fdefb7c4294237dadaa0ed25, type: 3}
   Ingredient3: Zapallo
-  Ingredient3Sprite: {fileID: 0}
+  Ingredient3Sprite: {fileID: 21300000, guid: 7a878a5eefc6f3545ba52dfd2aed5435, type: 3}

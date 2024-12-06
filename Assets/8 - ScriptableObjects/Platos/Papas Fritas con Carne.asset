@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Papas Fritas con Carne
   m_EditorClassIdentifier: 
   PlatoName: Papas fritas con Carne
-  PlatoSprite: {fileID: 0}
+  PlatoSprite: {fileID: 21300000, guid: 8613744f8c1eeb7428b7f58efe23af17, type: 3}
   Ingredient1: Papa
   Ingredient1Sprite: {fileID: 0}
   Ingredient2: Animal

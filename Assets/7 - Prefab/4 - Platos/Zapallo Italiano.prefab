@@ -208,7 +208,7 @@ MonoBehaviour:
   cookingTime: 30
   burningTime: 40
   rawTexture: {fileID: 2800000, guid: f7e4dca3cd9e6274a8ce1fee2a01ba71, type: 3}
-  cookedTexture: {fileID: 2800000, guid: a0c6649546a59934c9f0ccaea7bdd500, type: 3}
+  cookedTexture: {fileID: 2800000, guid: 50770c007d3288547b281328a085d8e8, type: 3}
   burnedTexture: {fileID: 2800000, guid: a0a571ce1466b674da1cdb844b32fab3, type: 3}
 --- !u!1 &1736823503322585603
 GameObject:

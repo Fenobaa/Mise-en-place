@@ -18,7 +18,9 @@ public class MedidordeCancer : MonoBehaviour
     private bool MuerteporCancer;
     public GameObject panelNegro;
     public AudioSource audio;
-
+    public AudioClip clip;
+    private bool isOnCD;
+    public Animator animator;
     private void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
@@ -36,19 +38,36 @@ public class MedidordeCancer : MonoBehaviour
 
     private void CigarroyMuerte()
     {
-        if (MuerteporCancer)
+        if (MuerteporCancer && !GameManager.instance.gameOver)
         {
+            GameManager.instance.gameOver = true;
             GameManager.instance.finalesComprobation = true;
             panelNegro.SetActive(true);
+            audio.clip = clip;
+            audio.Play();
             
+
         }
         if (Input.GetKeyDown(KeyCode.Mouse1) && Cambio.cigarro.activeSelf == true)
         {
-            UsoCigarro += 1;
-            gameManager.puntosdeAnsiedad -= 0.3;
+            if (isOnCD == false)
+            {
+                animator.SetTrigger("Stab");
+                UsoCigarro += 1;
+                gameManager.puntosdeAnsiedad -= 0.4;
+                StartCoroutine(Cooldown());
 
+            }
         }
 
+    }
+
+    IEnumerator Cooldown()
+    {
+        isOnCD = true;
+        yield return new WaitForSeconds(12f);
+        isOnCD = false;
+        yield break;
     }
 
     private void Pulmon()
