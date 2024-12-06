@@ -33,7 +33,7 @@ public class MedidordeCancer : MonoBehaviour
 
     private void CigarroyMuerte()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse1) && Cambio.Cigarro.activeSelf == true)
+        if (Input.GetKeyDown(KeyCode.Mouse1) && Cambio.cigarro.activeSelf == true)
         {
             UsoCigarro += 1;
             gameManager.puntosdeAnsiedad -= 0.3;

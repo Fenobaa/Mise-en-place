@@ -5,17 +5,20 @@ using UnityEngine;
 
 public class Cambiodeobjetos : MonoBehaviour
 {
-    public GameObject Cuchillo;
+    public GameObject cuchillo;
 
-    public GameObject Cigarro;
+    public GameObject cigarro;
+
+    public GameObject encendedor;
     
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
             GameManager.instance.pauseTimers = true;
-            Cuchillo.SetActive(false);
-            Cigarro.SetActive(true);
+            cuchillo.SetActive(false);
+            cigarro.SetActive(true);
+            encendedor.SetActive(true);
         }
     }
 
@@ -24,8 +27,10 @@ public class Cambiodeobjetos : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             GameManager.instance.pauseTimers = false;
-            Cuchillo.SetActive(true);
-            Cigarro.SetActive(false);
+            cigarro.SetActive(false);  
+            encendedor.SetActive(false);
+            cuchillo.SetActive(true);
+
         }
     }
 }
