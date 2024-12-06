@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
     public bool expulsadoPega = false;
     public int ordersCreated = 0;
 
-    public int ordersCompleted = 0;
+    public int ordersCompleted = 5;
     public bool matarJefe = false;
     public bool canKill = false;
     private void Awake()

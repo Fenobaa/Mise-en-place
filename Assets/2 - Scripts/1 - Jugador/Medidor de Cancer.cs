@@ -16,7 +16,8 @@ public class MedidordeCancer : MonoBehaviour
 
     [SerializeField] private double UsoCigarro;
     private bool MuerteporCancer;
-
+    public GameObject panelNegro;
+    public AudioSource audio;
 
     private void Start()
     {
@@ -35,18 +36,19 @@ public class MedidordeCancer : MonoBehaviour
 
     private void CigarroyMuerte()
     {
+        if (MuerteporCancer)
+        {
+            GameManager.instance.finalesComprobation = true;
+            panelNegro.SetActive(true);
+            
+        }
         if (Input.GetKeyDown(KeyCode.Mouse1) && Cambio.cigarro.activeSelf == true)
         {
             UsoCigarro += 1;
             gameManager.puntosdeAnsiedad -= 0.3;
 
         }
-        if (MuerteporCancer)
-        {
-            GameManager.instance.textAdvertencias.text =
-                "Los cigarros calmaron tu ansiedad, pero te llevaron a la muerte";
-            Time.timeScale = 0;
-        }
+
     }
 
     private void Pulmon()
