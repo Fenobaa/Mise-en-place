@@ -23,44 +23,47 @@ public class MedidordeAnsiedad : MonoBehaviour
 
     void Update()
     {
-
-        if (gameManager.puntosdeAnsiedad != 1 && gameManager.pauseTimers == false)
+        if (GameManager.instance.finalesComprobation == false)
         {
-            if ( gameManager.puntosdeAnsiedad == 0 )
+            if (gameManager.puntosdeAnsiedad != 1 && gameManager.pauseTimers == false)
             {
-                AnsiedadSuma = true;
-            }
-            if (gameManager.puntosdeAnsiedad >= 1)
-            {
-                gameManager.puntosdeAnsiedad = 1;
-                AnsiedadSuma = false;
-            }
-            
-            if (AnsiedadSuma == false && gameManager.puntosdeAnsiedad < 1)
-            {
-                AnsiedadSuma = true;    
-            }
-
-            if (AnsiedadSuma == true)
-            { 
-                segundero += Time.deltaTime;
-                if (segundero >= 1)
+                if ( gameManager.puntosdeAnsiedad == 0 )
                 {
-                    gameManager.puntosdeAnsiedad += 0.001f * gameManager.MultiplicadordeAnsiedad;
-                    segundero = 0;
+                    AnsiedadSuma = true;
                 }
+                if (gameManager.puntosdeAnsiedad >= 1)
+                {
+                    gameManager.puntosdeAnsiedad = 1;
+                    AnsiedadSuma = false;
+                }
+            
+                if (AnsiedadSuma == false && gameManager.puntosdeAnsiedad < 1)
+                {
+                    AnsiedadSuma = true;    
+                }
+
+                if (AnsiedadSuma == true)
+                { 
+                    segundero += Time.deltaTime;
+                    if (segundero >= 1)
+                    {
+                        gameManager.puntosdeAnsiedad += 0.001f * gameManager.MultiplicadordeAnsiedad;
+                        segundero = 0;
+                    }
+                }
+                CambiosPanelRojo();
+
+            
+            
             }
-            CambiosPanelRojo();
+            if (MedidorAnsiedad.fillAmount != gameManager.puntosdeAnsiedad)
+            {
 
-            
-            
+                MedidorAnsiedad.fillAmount = (float) gameManager.puntosdeAnsiedad;
+                //Debug.Log(MedidorAnsiedad.fillAmount);
+            }
         }
-        if (MedidorAnsiedad.fillAmount != gameManager.puntosdeAnsiedad)
-        {
-
-            MedidorAnsiedad.fillAmount = (float) gameManager.puntosdeAnsiedad;
-            //Debug.Log(MedidorAnsiedad.fillAmount);
-        }
+        
     }
 
 

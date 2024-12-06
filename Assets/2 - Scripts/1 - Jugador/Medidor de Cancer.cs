@@ -26,9 +26,11 @@ public class MedidordeCancer : MonoBehaviour
 
     void Update()
     {
-        CigarroyMuerte();
-        Pulmon();
-
+        if (GameManager.instance.finalesComprobation == false)
+        {
+            CigarroyMuerte();
+            Pulmon();
+        }
     }
 
     private void CigarroyMuerte()
