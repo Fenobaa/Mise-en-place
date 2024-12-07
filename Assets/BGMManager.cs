@@ -28,13 +28,13 @@ public class BGMManager : MonoBehaviour
     }
     public void Outside()
     {
-        mixer.SetFloat("ExposedBGM1", 0f);
-        mixer.SetFloat("ExposedBGM2", -80f);
+        mixer.SetFloat("ExposedBGM1", -80f);
+        mixer.SetFloat("ExposedBGM2", 0f);
     }
 
     public void Inside()
     {
-        mixer.SetFloat("ExposedBGM1", -80f);
-        mixer.SetFloat("ExposedBGM2", 0f);
+        mixer.SetFloat("ExposedBGM1", 0f);
+        mixer.SetFloat("ExposedBGM2", -80f);
     }
 }

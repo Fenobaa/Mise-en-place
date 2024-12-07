@@ -50,7 +50,7 @@ public class MedidordeCancer : MonoBehaviour
 
 
         }
-        if (Input.GetKeyDown(KeyCode.Mouse1) && Cambio.cigarro.activeSelf == true)
+        if (Input.GetKeyDown(KeyCode.Mouse0) && Cambio.cigarro.activeSelf == true)
         {
             if (isOnCD == false)
             {

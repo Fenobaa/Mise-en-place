@@ -16,14 +16,9 @@ public class PlayerController : MonoBehaviour
 
     private bool isGrounded;
     [SerializeField] public Vector3 checkPoint;
-    
-    public AudioSource audio1;
 
-    public AudioSource audio2;
-    
-    public AudioSource audio3;
-
-    [SerializeField] private List<AudioClip> clips;
+    private bool corroutineRunning = false;
+    public List<AudioClip> clips;
     
     [SerializeField] private int audioSpawnTime; 
     void Awake()
@@ -38,6 +33,11 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.instance.matarJefe == true && corroutineRunning == false)
+        {
+            corroutineRunning = true;
+            StartCoroutine(PlaySound());
+        }
         if (GameManager.instance.finalesComprobation == false)
         {
             float h = Input.GetAxis("Horizontal") * playerSpeed * Time.deltaTime;
@@ -55,31 +55,33 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (GameManager.instance.matarJefe == true)
-        {
-            StartCoroutine(PlaySound());
-        }
+
     }
 
     IEnumerator PlaySound()
     {
         int seleccion1 = Random.Range(0, clips.Count);
-        audio1.clip =  clips[seleccion1];
-        
+        AudioClip clip1 = clips[seleccion1];
+        AudioScript.Instance.ReplaceSFXClip(clip1);
+        AudioScript.Instance.PlaySFX(clip1);
+        Debug.Log("sereproduce");
+
+        yield return new WaitForSeconds(2f);
+
         int seleccion2 = Random.Range(0, clips.Count);
-        audio2.clip = clips[seleccion2];
-        
+        AudioClip clip2 = clips[seleccion2];
+        AudioScript.Instance.ReplaceSFXClip(clip2);
+        AudioScript.Instance.PlaySFX(clip2);
+
+        yield return new WaitForSeconds(2f);
+
         int seleccion3 = Random.Range(0, clips.Count);
-        audio3.clip = clips[seleccion3];
-        
-        audio1.clip = clips[seleccion1];
-        audio2.clip = clips[seleccion2];
-        audio3.clip = clips[seleccion3];
-        
-        audio1.Play();
-        audio2.Play();
-        audio3.Play();
+        AudioClip clip3 = clips[seleccion3];
+        AudioScript.Instance.ReplaceSFXClip(clip3);
+        AudioScript.Instance.PlaySFX(clip3);
+ 
         yield return new WaitForSeconds(audioSpawnTime);
+        corroutineRunning = false;
     }
 
     public void LoadCheckPoint()
